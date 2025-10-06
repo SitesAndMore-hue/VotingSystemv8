@@ -152,6 +152,16 @@
       margin-bottom: 16px;
       font-size: 0.875rem;
     }
+
+    .plan-badge {
+      background-color: #3B82F6;
+      color: white;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      margin-left: 8px;
+    }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-green-50 to-green-100">
@@ -175,6 +185,9 @@
         </div>
         <h1 class="text-5xl font-bold text-gray-800 mb-4">VotingSystem</h1>
         <p class="text-xl text-gray-600 max-w-md mx-auto">Create and share votes with anyone!</p>
+        <div class="mt-4">
+          <span class="plan-badge">Free Plan: 10 elections/month • 1000 votes max</span>
+        </div>
       </div>
       
       <div class="card p-8 max-w-md w-full scale-in">
@@ -212,6 +225,17 @@
             </svg>
           </button>
           <h2 class="text-2xl font-bold text-gray-800">Create a New Vote</h2>
+          <span class="plan-badge ml-2">Free Plan</span>
+        </div>
+
+        <!-- Plan Limits Info -->
+        <div id="plan-limits-info" class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+          <h3 class="font-medium text-blue-800 mb-2">Free Plan Limits</h3>
+          <ul class="text-sm text-blue-700 space-y-1">
+            <li>• Maximum 10 elections per month</li>
+            <li>• Maximum 1000 votes per election</li>
+            <li>• Real-time results and analytics</li>
+          </ul>
         </div>
         
         <div class="mb-6">
@@ -333,6 +357,10 @@
         <div id="election-ended-message" class="hidden mb-6 p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg">
           <p>This election has ended. Voting is no longer allowed.</p>
         </div>
+
+        <div id="max-votes-reached" class="hidden mb-6 p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg">
+          <p>This election has reached the maximum number of votes (1000).</p>
+        </div>
         
         <div id="security-fields" class="mb-6 space-y-4 hidden">
           <div id="name-field" class="hidden">
@@ -406,6 +434,21 @@
               </svg>
               Remove Vote
             </button>
+          </div>
+        </div>
+
+        <!-- Plan Usage Info -->
+        <div id="plan-usage-info" class="mb-6 p-4 bg-blue-50 border border-blue-200 rounded-lg hidden">
+          <h3 class="font-medium text-blue-800 mb-2">Free Plan Usage</h3>
+          <div class="text-sm text-blue-700 space-y-1">
+            <div class="flex justify-between">
+              <span>Elections this month:</span>
+              <span id="elections-this-month" class="font-semibold">0/10</span>
+            </div>
+            <div class="flex justify-between">
+              <span>Current election votes:</span>
+              <span id="current-election-votes" class="font-semibold">0/1000</span>
+            </div>
           </div>
         </div>
         
@@ -511,11 +554,17 @@
       let resultsChart = null;
       let voteListeners = {};
       
-      // Scalability Protection
+      // Optimized Scalability for 100+ concurrent users
       let activeRequests = 0;
-      const MAX_CONCURRENT_REQUESTS = 5;
-      let lastVoteTime = 0;
-      const VOTE_COOLDOWN_MS = 2000; // 2 seconds
+      const MAX_CONCURRENT_REQUESTS = 20; // Increased from 5 to 20
+      const VOTE_COOLDOWN_MS = 500; // Reduced from 2000ms to 500ms for faster voting
+      
+      // Free Plan Limits
+      const FREE_PLAN_LIMITS = {
+        maxElectionsPerMonth: 10,
+        maxVotesPerElection: 1000,
+        maxOptionsPerElection: 10
+      };
       
       // Show loading spinner
       function showLoading() {
@@ -527,8 +576,8 @@
         document.getElementById('loading-spinner').classList.add('hidden');
       }
       
-      // Rate limiting for Firebase requests
-      async function makeFirebaseRequest(operation) {
+      // Rate limiting for Firebase requests with exponential backoff
+      async function makeFirebaseRequest(operation, retries = 3) {
         if (activeRequests >= MAX_CONCURRENT_REQUESTS) {
           throw new Error('Server is busy. Please try again in a moment.');
         }
@@ -536,6 +585,13 @@
         activeRequests++;
         try {
           return await operation();
+        } catch (error) {
+          if (retries > 0 && (error.code === 'resource-exhausted' || error.code === 'deadline-exceeded')) {
+            // Exponential backoff for retries
+            await new Promise(resolve => setTimeout(resolve, Math.pow(2, 4 - retries) * 1000));
+            return makeFirebaseRequest(operation, retries - 1);
+          }
+          throw error;
         } finally {
           activeRequests--;
         }
@@ -546,6 +602,7 @@
         try {
           const storedMyVotes = localStorage.getItem('myVotes');
           const storedAllVotes = localStorage.getItem('allVotes');
+          const storedUsage = localStorage.getItem('planUsage');
           
           if (storedMyVotes) {
             myVotes = JSON.parse(storedMyVotes);
@@ -567,6 +624,56 @@
           localStorage.setItem('allVotes', JSON.stringify(allVotes));
         } catch (e) {
           console.error('Error saving data:', e);
+        }
+      }
+      
+      // Track plan usage
+      function getPlanUsage() {
+        const userId = generateUserId();
+        const now = new Date();
+        const monthKey = `${now.getFullYear()}-${now.getMonth() + 1}`;
+        
+        let usage = JSON.parse(localStorage.getItem(`planUsage_${userId}`) || '{}');
+        
+        if (!usage.monthKey || usage.monthKey !== monthKey) {
+          usage = {
+            monthKey: monthKey,
+            electionsCreated: 0,
+            elections: {}
+          };
+        }
+        
+        return usage;
+      }
+      
+      function savePlanUsage(usage) {
+        const userId = generateUserId();
+        localStorage.setItem(`planUsage_${userId}`, JSON.stringify(usage));
+      }
+      
+      // Check if user can create more elections
+      function canCreateElection() {
+        const usage = getPlanUsage();
+        return usage.electionsCreated < FREE_PLAN_LIMITS.maxElectionsPerMonth;
+      }
+      
+      // Update plan usage display
+      function updatePlanUsageDisplay() {
+        const usage = getPlanUsage();
+        const planUsageInfo = document.getElementById('plan-usage-info');
+        
+        if (planUsageInfo) {
+          document.getElementById('elections-this-month').textContent = 
+            `${usage.electionsCreated}/${FREE_PLAN_LIMITS.maxElectionsPerMonth}`;
+          
+          const selectedVoteId = document.getElementById('vote-select').value;
+          if (selectedVoteId && myVotes[selectedVoteId]) {
+            const vote = myVotes[selectedVoteId];
+            document.getElementById('current-election-votes').textContent = 
+              `${vote.voters ? vote.voters.length : 0}/${FREE_PLAN_LIMITS.maxVotesPerElection}`;
+          }
+          
+          planUsageInfo.classList.remove('hidden');
         }
       }
       
@@ -602,6 +709,11 @@
       
       // Event listeners for navigation
       document.getElementById('create-vote-btn').addEventListener('click', () => {
+        // Check plan limits before allowing creation
+        if (!canCreateElection()) {
+          alert(`You've reached the free plan limit of ${FREE_PLAN_LIMITS.maxElectionsPerMonth} elections per month.`);
+          return;
+        }
         showScreen(createVoteForm);
       });
       
@@ -627,6 +739,10 @@
       });
       
       document.getElementById('create-first-vote').addEventListener('click', () => {
+        if (!canCreateElection()) {
+          alert(`You've reached the free plan limit of ${FREE_PLAN_LIMITS.maxElectionsPerMonth} elections per month.`);
+          return;
+        }
         showScreen(createVoteForm);
       });
       
@@ -638,6 +754,13 @@
       document.getElementById('add-option').addEventListener('click', () => {
         const optionsContainer = document.getElementById('options-container');
         const optionCount = optionsContainer.children.length + 1;
+        
+        // Check option limit
+        if (optionCount > FREE_PLAN_LIMITS.maxOptionsPerElection) {
+          alert(`Free plan limit: Maximum ${FREE_PLAN_LIMITS.maxOptionsPerElection} options per election.`);
+          return;
+        }
+        
         const optionDiv = document.createElement('div');
         optionDiv.className = 'flex items-center';
         optionDiv.innerHTML = `
@@ -698,9 +821,15 @@
           return;
         }
         
+        // Check plan limits
+        if (!canCreateElection()) {
+          alert(`You've reached the free plan limit of ${FREE_PLAN_LIMITS.maxElectionsPerMonth} elections per month.`);
+          return;
+        }
+        
         showLoading();
         
-        // Create vote object - REMOVED CARD UPLOAD FIELDS
+        // Create vote object
         const voteId = generateVoteId();
         const creatorId = generateUserId();
         
@@ -714,7 +843,8 @@
           voters: [],
           createdAt: new Date().toISOString(),
           ended: false,
-          creatorId: creatorId
+          creatorId: creatorId,
+          plan: 'free'
         };
         
         try {
@@ -722,6 +852,15 @@
           await makeFirebaseRequest(() => 
             db.collection('votes').doc(voteId).set(currentVote)
           );
+          
+          // Update plan usage
+          const usage = getPlanUsage();
+          usage.electionsCreated = (usage.electionsCreated || 0) + 1;
+          usage.elections[voteId] = {
+            createdAt: new Date().toISOString(),
+            title: title
+          };
+          savePlanUsage(usage);
           
           // Save to local storage
           myVotes[voteId] = {...currentVote};
@@ -814,16 +953,26 @@
         // Check if election has ended
         const electionEndedBadge = document.getElementById('election-ended-badge');
         const electionEndedMessage = document.getElementById('election-ended-message');
+        const maxVotesReached = document.getElementById('max-votes-reached');
         const submitButton = document.getElementById('submit-vote');
+        
+        // Check vote limit for free plan
+        const currentVotes = currentVote.voters ? currentVote.voters.length : 0;
+        const voteLimitReached = currentVotes >= FREE_PLAN_LIMITS.maxVotesPerElection;
         
         if (currentVote.ended) {
           electionEndedBadge.classList.remove('hidden');
           electionEndedMessage.classList.remove('hidden');
           submitButton.disabled = true;
           submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+        } else if (voteLimitReached) {
+          maxVotesReached.classList.remove('hidden');
+          submitButton.disabled = true;
+          submitButton.classList.add('opacity-50', 'cursor-not-allowed');
         } else {
           electionEndedBadge.classList.add('hidden');
           electionEndedMessage.classList.add('hidden');
+          maxVotesReached.classList.add('hidden');
           submitButton.disabled = false;
           submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
         }
@@ -834,8 +983,6 @@
         
         // Reset the already voted message first
         alreadyVotedMessage.classList.add('hidden');
-        submitButton.disabled = false;
-        submitButton.classList.remove('opacity-50', 'cursor-not-allowed');
         
         // Then check if user has voted
         if (currentVote.voters && currentVote.voters.some(voter => voter.userId === userId)) {
@@ -844,7 +991,7 @@
           submitButton.classList.add('opacity-50', 'cursor-not-allowed');
         }
         
-        // Show security fields if required - REMOVED CARD UPLOAD
+        // Show security fields if required
         const securityFields = document.getElementById('security-fields');
         if (currentVote.requireName) {
           securityFields.classList.remove('hidden');
@@ -874,7 +1021,7 @@
         });
       }
       
-      // Submit vote - IMPROVED with rate limiting and no card upload
+      // Submit vote - OPTIMIZED for 100+ concurrent users
       document.getElementById('submit-vote').addEventListener('click', async () => {
         // Rate limiting cooldown
         const now = Date.now();
@@ -890,6 +1037,13 @@
           return;
         }
 
+        // Check vote limit
+        const currentVotes = currentVote.voters ? currentVote.voters.length : 0;
+        if (currentVotes >= FREE_PLAN_LIMITS.maxVotesPerElection) {
+          alert('This election has reached the maximum number of votes (1000).');
+          return;
+        }
+
         // Check if user has already voted
         const userId = generateUserId();
         if (currentVote.voters && currentVote.voters.some(voter => voter.userId === userId)) {
@@ -897,7 +1051,7 @@
           return;
         }
 
-        // Validate security requirements - REMOVED CARD UPLOAD
+        // Validate security requirements
         let voterName = '';
         if (currentVote.requireName) {
           voterName = document.getElementById('voter-name').value.trim();
@@ -916,7 +1070,7 @@
 
         const optionIndex = parseInt(selectedOption.value);
         
-        // Create voter data - SIMPLIFIED (no card data)
+        // Create voter data
         const voterData = {
           name: voterName || 'Anonymous',
           votedFor: currentVote.options[optionIndex].text,
@@ -945,18 +1099,34 @@
             alert('You have already voted in this election.');
             return;
           }
+          
+          // Check vote limit again
+          const currentVotesCount = currentVoteData.voters ? currentVoteData.voters.length : 0;
+          if (currentVotesCount >= FREE_PLAN_LIMITS.maxVotesPerElection) {
+            hideLoading();
+            alert('This election has reached the maximum number of votes (1000).');
+            return;
+          }
 
-          // Update the vote in Firebase - OPTIMIZED DATA STRUCTURE
-          const updatedOptions = [...currentVoteData.options];
-          updatedOptions[optionIndex].votes = (updatedOptions[optionIndex].votes || 0) + 1;
-          
-          const updatedVoters = [...(currentVoteData.voters || []), voterData];
-          
+          // OPTIMIZED: Use Firestore transactions for atomic updates
           await makeFirebaseRequest(() => 
-            db.collection('votes').doc(currentVote.id).update({
-              totalVotes: (currentVoteData.totalVotes || 0) + 1,
-              voters: updatedVoters,
-              options: updatedOptions
+            db.runTransaction(async (transaction) => {
+              const voteDoc = await transaction.get(db.collection('votes').doc(currentVote.id));
+              if (!voteDoc.exists) {
+                throw new Error('Vote not found');
+              }
+              
+              const voteData = voteDoc.data();
+              const updatedOptions = [...voteData.options];
+              updatedOptions[optionIndex].votes = (updatedOptions[optionIndex].votes || 0) + 1;
+              
+              const updatedVoters = [...(voteData.voters || []), voterData];
+              
+              transaction.update(db.collection('votes').doc(currentVote.id), {
+                totalVotes: (voteData.totalVotes || 0) + 1,
+                voters: updatedVoters,
+                options: updatedOptions
+              });
             })
           );
 
@@ -973,6 +1143,8 @@
             alert('This vote has been deleted by the creator.');
           } else if (error.code === 'permission-denied') {
             alert('You do not have permission to vote in this election.');
+          } else if (error.code === 'failed-precondition') {
+            alert('The vote data has changed. Please refresh and try again.');
           } else {
             alert('Error submitting vote. Please try again.');
           }
@@ -1026,6 +1198,7 @@
           });
           
           saveData();
+          updatePlanUsageDisplay();
           hideLoading();
           
         } catch (error) {
@@ -1045,6 +1218,7 @@
               option.textContent = vote.title;
               voteSelect.appendChild(option);
             }
+            updatePlanUsageDisplay();
           }
         }
       }
@@ -1096,6 +1270,7 @@
               
               hideLoading();
               resultsContent.classList.remove('hidden');
+              updatePlanUsageDisplay();
             }
           }).catch(error => {
             hideLoading();
@@ -1121,7 +1296,8 @@
         document.getElementById('share-vote-link').value = shareLink;
         
         // Show total voters
-        document.getElementById('total-voters').textContent = vote.voters ? vote.voters.length : 0;
+        const totalVoters = vote.voters ? vote.voters.length : 0;
+        document.getElementById('total-voters').textContent = totalVoters;
         
         // Determine winner
         let winner = null;
@@ -1156,6 +1332,9 @@
         if (vote.ended) {
           electionStatus.textContent = 'Status: Ended';
           electionStatus.className = 'text-red-600 text-sm mt-1';
+        } else if (totalVoters >= FREE_PLAN_LIMITS.maxVotesPerElection) {
+          electionStatus.textContent = 'Status: Max Votes Reached';
+          electionStatus.className = 'text-orange-600 text-sm mt-1';
         } else {
           electionStatus.textContent = 'Status: Active';
           electionStatus.className = 'text-green-600 text-sm mt-1';
@@ -1172,14 +1351,17 @@
           setTimeout(() => shareMessage.classList.add('hidden'), 2000);
         };
         
-        // Show voters list if there are voters - SIMPLIFIED (no card type)
+        // Show voters list if there are voters
         const votersList = document.getElementById('voters-list');
         if (vote.voters && vote.voters.length > 0) {
           votersList.classList.remove('hidden');
           const votersTableBody = document.getElementById('voters-table-body');
           votersTableBody.innerHTML = '';
           
-          vote.voters.forEach(voter => {
+          // Show only last 50 voters for performance
+          const recentVoters = vote.voters.slice(-50);
+          
+          recentVoters.forEach(voter => {
             const row = document.createElement('tr');
             const time = new Date(voter.timestamp).toLocaleString();
             row.innerHTML = `
