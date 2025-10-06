@@ -390,8 +390,16 @@
             <h2 class="text-2xl font-bold text-gray-800">My Created Votes</h2>
           </div>
           <div class="flex space-x-2">
-            <button id="remove-vote-btn" class="text-red-600 hover:text-red-800 flex items-center transition-colors hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+            <button id="end-election-btn" class="bg-red-600 hover:bg-red-700 text-white flex items-center px-3 py-2 rounded-lg transition-colors hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="15" y1="9" x2="9" y2="15"></line>
+                <line x1="9" y1="9" x2="15" y2="15"></line>
+              </svg>
+              End Election
+            </button>
+            <button id="remove-vote-btn" class="text-red-600 hover:text-red-800 flex items-center px-3 py-2 border border-red-600 rounded-lg transition-colors hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
                 <path d="M3 6h18"></path>
                 <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
                 <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
@@ -1046,6 +1054,7 @@
         const voteId = this.value;
         const resultsContent = document.getElementById('results-content');
         const removeVoteBtn = document.getElementById('remove-vote-btn');
+        const endElectionBtn = document.getElementById('end-election-btn');
         
         if (voteId && myVotes[voteId]) {
           showLoading();
@@ -1079,9 +1088,11 @@
               
               // Show action buttons
               removeVoteBtn.classList.remove('hidden');
+              endElectionBtn.classList.remove('hidden');
               
-              // Set up button event handler
+              // Set up button event handlers
               removeVoteBtn.onclick = () => removeVote(voteId);
+              endElectionBtn.onclick = () => endElection(voteId);
               
               hideLoading();
               resultsContent.classList.remove('hidden');
@@ -1096,6 +1107,7 @@
         } else {
           resultsContent.classList.add('hidden');
           removeVoteBtn.classList.add('hidden');
+          endElectionBtn.classList.add('hidden');
         }
       });
       
@@ -1271,6 +1283,50 @@
               alert(error.message);
             } else {
               alert('Error deleting vote. Please try again.');
+            }
+          }
+        }
+      }
+      
+      // End election functionality
+      async function endElection(voteId) {
+        if (confirm('Are you sure you want to end this election? This will prevent any further voting.')) {
+          showLoading();
+          try {
+            // Update the vote in Firebase to set ended to true
+            await makeFirebaseRequest(() => 
+              db.collection('votes').doc(voteId).update({
+                ended: true
+              })
+            );
+            
+            // Update local storage
+            if (myVotes[voteId]) {
+              myVotes[voteId].ended = true;
+              saveData();
+            }
+            
+            // Update the UI to reflect the change
+            if (voteListeners[voteId]) {
+              // Force a refresh of the displayed data
+              const doc = await makeFirebaseRequest(() => 
+                db.collection('votes').doc(voteId).get()
+              );
+              if (doc.exists) {
+                const updatedVote = doc.data();
+                updateResultsDisplay(updatedVote);
+              }
+            }
+            
+            hideLoading();
+            alert('Election ended successfully!');
+          } catch (error) {
+            hideLoading();
+            console.error('Error ending election:', error);
+            if (error.message.includes('Server is busy')) {
+              alert(error.message);
+            } else {
+              alert('Error ending election. Please try again.');
             }
           }
         }
