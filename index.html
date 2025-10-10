@@ -175,36 +175,25 @@
       font-size: 0.875rem;
     }
 
-    /* SEO Content Styling */
+    /* SEO Content Styling - INVISIBLE TO HUMANS */
     .seo-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 40px 20px;
-      line-height: 1.7;
-      color: #4B5563;
-    }
-    
-    .seo-content h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: #1F2937;
-      margin-bottom: 1.5rem;
-      text-align: center;
-    }
-    
-    .seo-content p {
-      font-size: 1.125rem;
-      margin-bottom: 1.5rem;
+      position: absolute;
+      left: -9999px;
+      top: auto;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+      font-size: 1px;
+      color: transparent;
+      line-height: 0.1;
+      opacity: 0.01;
     }
   </style>
 </head>
 <body class="min-h-screen bg-gradient-to-br from-green-50 to-green-100">
-  <!-- Hidden SEO Content for Search Engines -->
-  <div class="seo-content hidden md:block">
-    <h1>VotingSystem – Free Online Voting Platform</h1>
-    <p>
-      Welcome to VotingSystem, the ultimate free online voting platform designed to let you create, share, and manage polls effortlessly. With VotingSystem, you can generate sharable votes, conduct anonymous voting, and collect real-time results securely, all without requiring any login or registration. Whether you're hosting classroom polls, club elections, quick surveys, or community votes, our platform ensures fast, reliable, and easy-to-use online voting. Enjoy instant voting results, real-time analytics, and full control over your elections with VotingSystem's secure and cross-platform interface. Create unlimited free polls, manage voter participation, track votes in real time, and share your polls with anyone via direct links or QR codes. Designed for simplicity and speed, VotingSystem supports anonymous polling, group voting, instant results visualization, and interactive vote management. Perfect for teachers, event organizers, clubs, or online communities, it's a versatile tool for both casual and professional elections. Take advantage of our free plan to conduct multiple polls monthly, with detailed voting analytics and secure vote tracking. With VotingSystem, experience a modern online voting system that prioritizes privacy, accessibility, and ease of use. Engage your audience, streamline your elections, and empower voters to participate seamlessly in every poll. Discover the best way to create online votes, manage polls, track results, and share elections effortlessly. VotingSystem is your go-to solution for free, secure, no-login polls, online voting, anonymous surveys, interactive elections, real-time results, sharable votes, and hassle-free vote management, making your online voting experience smooth, efficient, and reliable.
-    </p>
+  <!-- Hidden SEO Content for Search Engines - INVISIBLE TO HUMANS -->
+  <div class="seo-content">
+    VotingSystem, VotingSystem-nu, Aren Nersesyan, free online voting, online polls, vote without login, anonymous voting, instant voting, real-time results, sharable vote, no registration voting, secure voting, create poll free, quick surveys, classroom polls, event voting, community polls, online elections, opinion polls, group voting, multi-choice polls, single-choice polls, instant feedback, vote tracking, vote analytics, poll management, interactive voting, digital ballot, online survey, online feedback, poll creation, easy voting, fast polls, reliable voting, accessible voting, mobile-friendly voting, cross-platform voting, secure polls, private voting, confidential voting, polling system, voting platform, election management, vote collection, decision-making tool, online quiz, survey tool, engagement tool, student polls, teacher polls, club elections, corporate polls, community decision, instant poll results, vote visualization, poll dashboard, voter participation, anonymous ballot, easy-to-use polls, event polling, online voting app, free vote creator, group decision, voting software, vote sharing, poll link sharing, QR code polls, vote summary, secure data, online vote count, quick polls, feedback collection, instant survey results, polling analytics, vote chart, digital polling, event feedback, anonymous survey, classroom voting tool, free voting tool, online ballot creation, vote management, community engagement, survey platform, interactive polls online, vote instantly, poll results tracking, online survey management, secure online voting, real-time poll, voting experience, poll participation, online feedback tool, voting system free, instant poll sharing, anonymous vote tracking, election polls online, real-time election results, online quiz polling, shareable poll links, free anonymous polls, instant feedback tool, event decision-making, multi-user polls, voting analytics dashboard, online voting for events, quick survey tool, instant online voting, classroom quiz voting, club decision polls, vote securely online, online polling service, interactive online voting, poll result analytics, anonymous online voting, shareable voting platform, voting tool free, vote instantly online, poll management system, online election tool, survey results online, vote collection online, student feedback polls, club vote tracking, event participation polls, digital vote manager, secure vote platform, online decision tool, online poll results, instant vote visualization, no-login poll system, free online poll platform, voting experience online, vote dashboard, poll engagement, interactive survey tool, voting interface online, shareable digital polls, anonymous polling system, online vote analytics, real-time vote results, online group voting, vote result visualization, online quiz creation, instant vote tracking, online polling platform, easy poll creation, secure online election, anonymous survey tool, free vote platform, voting system online, quick vote collection, interactive voting dashboard, classroom polling tool, free anonymous voting, vote sharing platform, online survey tool, fast online polls, vote management dashboard, secure real-time polls, online feedback collection, digital election system, poll participation tracking, instant online surveys, voting app free, online vote management, poll creation software, shareable poll system, interactive poll platform, vote instantly app, online polling tool, event vote tracking, online anonymous polls, real-time polling analytics, classroom vote tracking, club voting platform, digital voting tool, free interactive polls, instant group voting, online survey creation, secure poll results, no-login online polls, voting platform free, anonymous poll platform, instant polling system, real-time feedback polls, online election platform, free digital polls, classroom poll system, community vote platform, instant voting software, interactive voting system, shareable poll creator, online quiz polls, vote dashboard online, voting analytics tool, quick online surveys, free voting website, instant voting platform, anonymous poll creator, online vote tracking, poll system online, secure voting tool, interactive survey platform, instant poll analytics, classroom anonymous voting, digital vote collection, fast polling online, event poll management, vote collection tool, online decision-making platform, online feedback surveys, real-time classroom polls, multi-choice voting online, single-choice poll online, easy-to-use digital polls, voting platform anonymous, poll result tracking, instant digital voting, free online ballot, vote instantly platform, online engagement tool, voting software free, VotingSystem Aren Nersesyan, VotingSystem-nu Aren Nersesyan
   </div>
 
   <div id="app" class="min-h-screen">
@@ -442,13 +431,13 @@
             <h2 class="text-2xl font-bold text-gray-800">My Created Votes</h2>
           </div>
           <div class="flex space-x-2">
-            <button id="remove-vote-btn" class="text-red-600 hover:text-red-800 flex items-center transition-colors hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+            <button id="remove-vote-btn" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1 inline">
                 <path d="M3 6h18"></path>
                 <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
                 <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
               </svg>
-              Remove Vote
+              Delete Vote
             </button>
           </div>
         </div>
@@ -483,6 +472,23 @@
               <p id="winner-info" class="text-green-600 font-semibold"></p>
               <p id="election-status" class="text-sm mt-1"></p>
             </div>
+          </div>
+          
+          <!-- Vote Management Section -->
+          <div class="mb-6">
+            <h4 class="text-lg font-medium text-gray-800 mb-3">Vote Management</h4>
+            <div class="flex space-x-4">
+              <button id="end-election-btn" class="px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-orange-600 transition-colors">
+                End Election
+              </button>
+              <button id="reopen-election-btn" class="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors hidden">
+                Reopen Election
+              </button>
+              <button id="remove-vote-management-btn" class="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors">
+                Delete Vote
+              </button>
+            </div>
+            <p class="text-sm text-gray-600 mt-2">Ending election prevents further voting but preserves results.</p>
           </div>
           
           <div class="mb-8">
@@ -744,7 +750,7 @@
         
         showLoading();
         
-        // Create vote object - REMOVED CARD UPLOAD FIELDS
+        // Create vote object
         const voteId = generateVoteId();
         const creatorId = generateUserId();
         
@@ -888,7 +894,7 @@
           submitButton.classList.add('opacity-50', 'cursor-not-allowed');
         }
         
-        // Show security fields if required - REMOVED CARD UPLOAD
+        // Show security fields if required
         const securityFields = document.getElementById('security-fields');
         if (currentVote.requireName) {
           securityFields.classList.remove('hidden');
@@ -918,7 +924,7 @@
         });
       }
       
-      // Submit vote - IMPROVED with rate limiting and no card upload
+      // Submit vote
       document.getElementById('submit-vote').addEventListener('click', async () => {
         // Rate limiting cooldown
         const now = Date.now();
@@ -941,7 +947,7 @@
           return;
         }
 
-        // Validate security requirements - REMOVED CARD UPLOAD
+        // Validate security requirements
         let voterName = '';
         if (currentVote.requireName) {
           voterName = document.getElementById('voter-name').value.trim();
@@ -960,7 +966,7 @@
 
         const optionIndex = parseInt(selectedOption.value);
         
-        // Create voter data - SIMPLIFIED (no card data)
+        // Create voter data
         const voterData = {
           name: voterName || 'Anonymous',
           votedFor: currentVote.options[optionIndex].text,
@@ -990,7 +996,7 @@
             return;
           }
 
-          // Update the vote in Firebase - OPTIMIZED DATA STRUCTURE
+          // Update the vote in Firebase
           const updatedOptions = [...currentVoteData.options];
           updatedOptions[optionIndex].votes = (updatedOptions[optionIndex].votes || 0) + 1;
           
@@ -1132,9 +1138,6 @@
               // Show action buttons
               removeVoteBtn.classList.remove('hidden');
               
-              // Set up button event handler
-              removeVoteBtn.onclick = () => removeVote(voteId);
-              
               hideLoading();
               resultsContent.classList.remove('hidden');
             }
@@ -1191,14 +1194,21 @@
           winnerInfo.className = 'text-gray-600 font-semibold';
         }
         
-        // Show election status
+        // Show election status and manage buttons
         const electionStatus = document.getElementById('election-status');
+        const endButton = document.getElementById('end-election-btn');
+        const reopenButton = document.getElementById('reopen-election-btn');
+        
         if (vote.ended) {
           electionStatus.textContent = 'Status: Ended';
           electionStatus.className = 'text-red-600 text-sm mt-1';
+          endButton.classList.add('hidden');
+          reopenButton.classList.remove('hidden');
         } else {
           electionStatus.textContent = 'Status: Active';
           electionStatus.className = 'text-green-600 text-sm mt-1';
+          endButton.classList.remove('hidden');
+          reopenButton.classList.add('hidden');
         }
         
         // Copy share link
@@ -1212,7 +1222,7 @@
           setTimeout(() => shareMessage.classList.add('hidden'), 2000);
         };
         
-        // Show voters list if there are voters - SIMPLIFIED (no card type)
+        // Show voters list if there are voters
         const votersList = document.getElementById('voters-list');
         if (vote.voters && vote.voters.length > 0) {
           votersList.classList.remove('hidden');
@@ -1290,72 +1300,112 @@
       
       // Remove vote functionality - FIXED VERSION
       async function removeVote(voteId) {
-        if (confirm('Are you sure you want to delete this vote? This action cannot be undone.')) {
-          showLoading();
-          try {
-            // First check if the vote exists and user is the creator
-            const voteDoc = await makeFirebaseRequest(() => 
-              db.collection('votes').doc(voteId).get()
-            );
-            
-            if (!voteDoc.exists) {
-              hideLoading();
-              alert('Vote not found. It may have already been deleted.');
-              return;
-            }
-            
-            const vote = voteDoc.data();
-            const userId = generateUserId();
-            
-            // Verify user is the creator
-            if (vote.creatorId !== userId) {
-              hideLoading();
-              alert('You can only delete votes that you created.');
-              return;
-            }
-            
-            // Delete from Firebase
-            await makeFirebaseRequest(() => 
-              db.collection('votes').doc(voteId).delete()
-            );
-            
-            // Remove listener
-            if (voteListeners[voteId]) {
-              voteListeners[voteId]();
-              delete voteListeners[voteId];
-            }
-            
-            // Delete from local storage
-            delete myVotes[voteId];
-            delete allVotes[voteId];
-            saveData();
-            
-            // Clear results and go back to results screen
-            document.getElementById('results-content').classList.add('hidden');
-            document.getElementById('vote-select').value = '';
-            populateVoteSelect();
-            
-            hideLoading();
-            alert('Vote deleted successfully!');
-            
-          } catch (error) {
-            hideLoading();
-            console.error('Error deleting vote:', error);
-            console.error('Error code:', error.code);
-            console.error('Error message:', error.message);
-            
-            if (error.message.includes('Server is busy')) {
-              alert(error.message);
-            } else if (error.code === 'permission-denied') {
-              alert('Permission denied. You can only delete votes that you created.');
-            } else if (error.code === 'not-found') {
-              alert('Vote not found. It may have already been deleted.');
-            } else {
-              alert('Error deleting vote. Please check your Firebase security rules.');
-            }
+        if (!confirm('Are you sure you want to permanently delete this vote? This action cannot be undone.')) {
+          return;
+        }
+
+        showLoading();
+        
+        try {
+          // Verify ownership and existence
+          const voteDoc = await db.collection('votes').doc(voteId).get();
+          
+          if (!voteDoc.exists) {
+            throw new Error('Vote not found. It may have already been deleted.');
           }
+
+          const currentUserId = generateUserId();
+          if (voteDoc.data().creatorId !== currentUserId) {
+            throw new Error('You can only delete votes that you created.');
+          }
+
+          // Perform deletion
+          await db.collection('votes').doc(voteId).delete();
+          
+          // Clean up local data and UI
+          delete myVotes[voteId];
+          saveData();
+          
+          // Remove from dropdown and reset UI
+          document.getElementById('vote-select').value = '';
+          document.getElementById('results-content').classList.add('hidden');
+          document.getElementById('remove-vote-btn').classList.add('hidden');
+          
+          // Refresh the votes list
+          await populateVoteSelect();
+          
+          hideLoading();
+          alert('Vote deleted successfully!');
+          
+        } catch (error) {
+          hideLoading();
+          console.error('Delete error details:', error);
+          alert(`Delete failed: ${error.message}. Please check your Firebase security rules.`);
         }
       }
+
+      // End election functionality
+      document.getElementById('end-election-btn').addEventListener('click', async function() {
+        const voteId = document.getElementById('vote-select').value;
+        if (!voteId) return;
+        
+        if (!confirm('Are you sure you want to end this election? This will prevent any further voting.')) {
+          return;
+        }
+
+        showLoading();
+        try {
+          await db.collection('votes').doc(voteId).update({
+            ended: true
+          });
+          // The real-time listener will update the UI
+          hideLoading();
+          alert('Election ended successfully!');
+        } catch (error) {
+          hideLoading();
+          console.error('Error ending election:', error);
+          alert('Error ending election. Please try again.');
+        }
+      });
+
+      // Reopen election functionality
+      document.getElementById('reopen-election-btn').addEventListener('click', async function() {
+        const voteId = document.getElementById('vote-select').value;
+        if (!voteId) return;
+        
+        if (!confirm('Are you sure you want to reopen this election? This will allow voting again.')) {
+          return;
+        }
+
+        showLoading();
+        try {
+          await db.collection('votes').doc(voteId).update({
+            ended: false
+          });
+          // The real-time listener will update the UI
+          hideLoading();
+          alert('Election reopened successfully!');
+        } catch (error) {
+          hideLoading();
+          console.error('Error reopening election:', error);
+          alert('Error reopening election. Please try again.');
+        }
+      });
+
+      // Set up delete button handlers
+      document.getElementById('remove-vote-btn').addEventListener('click', function() {
+        const voteId = document.getElementById('vote-select').value;
+        if (voteId) {
+          removeVote(voteId);
+        }
+      });
+
+      document.getElementById('remove-vote-management-btn').addEventListener('click', function() {
+        const voteId = document.getElementById('vote-select').value;
+        if (voteId) {
+          removeVote(voteId);
+        }
+      });
       
       // Initialize the application
       function initializeApp() {
