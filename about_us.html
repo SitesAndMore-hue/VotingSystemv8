@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us - VotingSystem</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #3DDC84;
+            --primary-dark: #34C275;
+            --background: #FFFFFF;
+            --foreground: #202124;
+            --muted-foreground: #5F6368;
+            --border: #DADCE0;
+            --muted: #F8F9FA;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
+        }
+        
+        .fade-in {
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        
+        .slide-up {
+            animation: slideUp 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { transform: translateY(30px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+            transition: all 0.2s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card {
+            background-color: var(--background);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+        
+        .feature-icon {
+            background-color: rgba(61, 220, 132, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+            display: inline-flex;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-green-50 to-green-100">
+    <!-- About Us Page -->
+    <div id="about-us-page" class="min-h-screen">
+        <!-- Simple Header with VotingSystem text -->
+        <div class="py-6 px-4">
+            <div class="container mx-auto flex justify-center">
+                <div class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
+                    </svg>
+                    <span class="ml-2 text-xl font-bold text-gray-800">VotingSystem</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mission Section - Centered -->
+        <section class="py-16 px-4">
+            <div class="container mx-auto max-w-4xl text-center slide-up">
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">Our Mission</h1>
+                
+                <div class="card p-8 max-w-3xl mx-auto">
+                    <p class="text-lg text-gray-600 mb-6">
+                        VotingSystem was created to solve a simple but important problem: making voting and decision-making accessible to organizations of all sizes without the complexity and cost of traditional voting systems.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        We believe that every group - from classrooms and community organizations to businesses and teams - deserves access to simple, secure, and transparent voting tools.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our platform eliminates barriers by requiring no registration, no downloads, and no technical expertise - just a powerful, intuitive tool for collective decision-making.
+                    </p>
+                    
+                    <div class="flex justify-center space-x-4 mt-8">
+                        <button onclick="window.location.href='index.html'" class="btn-primary py-3 px-8 rounded-lg font-medium">
+                            Create Your First Vote
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="py-16 px-4">
+            <div class="container mx-auto max-w-6xl">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Values</h2>
+                    <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                        The principles that guide everything we do
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="card p-8 text-center slide-up">
+                        <div class="feature-icon mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Transparency</h3>
+                        <p class="text-gray-600">
+                            We believe in open, honest processes. Our platform provides clear, verifiable results that everyone can trust.
+                        </p>
+                    </div>
+                    
+                    <div class="card p-8 text-center slide-up">
+                        <div class="feature-icon mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Accessibility</h3>
+                        <p class="text-gray-600">
+                            We're committed to breaking down barriers. No registration, no downloads, no technical expertise required.
+                        </p>
+                    </div>
+                    
+                    <div class="card p-8 text-center slide-up">
+                        <div class="feature-icon mx-auto">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"></polyline>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-4">Simplicity</h3>
+                        <p class="text-gray-600">
+                            We believe powerful tools should be simple to use. Our interface is intuitive and requires no training.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Simple Footer -->
+        <footer class="bg-gray-800 text-white py-12 px-4 mt-16">
+            <div class="container mx-auto max-w-6xl text-center">
+                <div class="flex items-center justify-center mb-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
+                    </svg>
+                    <span class="ml-2 text-lg font-bold">VotingSystem</span>
+                </div>
+                <p class="text-gray-400">
+                    &copy; 2024 Created by Aren Group.
+                </p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Simple animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.slide-up');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(el => {
+                el.style.animationPlayState = 'paused';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
