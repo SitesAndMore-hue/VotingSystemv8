@@ -202,6 +202,7 @@
       display: flex;
       justify-content: center;
       margin: 20px 0;
+      min-height: 50px;
     }
     
     .ad-banner {
@@ -215,6 +216,7 @@
     .ad-native {
       max-width: 100%;
       margin: 20px auto;
+      min-height: 250px;
     }
     
     .ad-label {
@@ -222,6 +224,12 @@
       font-size: 0.75rem;
       color: var(--muted-foreground);
       margin-bottom: 5px;
+    }
+    
+    /* Ensure ads are visible */
+    .adsterra-banner, .adsterra-native {
+      width: 100%;
+      text-align: center;
     }
   </style>
 </head>
@@ -247,16 +255,9 @@
     <div class="ad-container mt-4">
       <div class="ad-banner">
         <div class="ad-label">Advertisement</div>
-        <script type="text/javascript">
-          atOptions = {
-            'key' : '256666e63f97e029da958066a2a4ad2b',
-            'format' : 'iframe',
-            'height' : 50,
-            'width' : 320,
-            'params' : {}
-          };
-        </script>
-        <script type="text/javascript" src="//www.highperformanceformat.com/256666e63f97e029da958066a2a4ad2b/invoke.js"></script>
+        <div id="adsterra-banner" class="adsterra-banner">
+          <!-- Banner Ad will be loaded here -->
+        </div>
       </div>
     </div>
 
@@ -295,8 +296,9 @@
       <!-- Native Ad -->
       <div class="ad-native max-w-md mt-8">
         <div class="ad-label">Advertisement</div>
-        <script async="async" data-cfasync="false" src="//pl27834999.effectivegatecpm.com/cf6cf52368f543a434eb6b67b3921d14/invoke.js"></script>
-        <div id="container-cf6cf52368f543a434eb6b67b3921d14"></div>
+        <div id="adsterra-native" class="adsterra-native">
+          <!-- Native Ad will be loaded here -->
+        </div>
       </div>
       
       <div class="mt-12 text-center text-gray-500 slide-up">
@@ -582,6 +584,59 @@
       </div>
     </div>
   </div>
+
+  <!-- Adsterra Ad Scripts -->
+  <script>
+    // Function to load Adsterra ads
+    function loadAdsterraAds() {
+      // Banner Ad (320x50)
+      const bannerAd = document.getElementById('adsterra-banner');
+      if (bannerAd && !bannerAd.querySelector('script')) {
+        bannerAd.innerHTML = `
+          <script type="text/javascript">
+            atOptions = {
+              'key' : '256666e63f97e029da958066a2a4ad2b',
+              'format' : 'iframe',
+              'height' : 50,
+              'width' : 320,
+              'params' : {}
+            };
+          <\/script>
+          <script type="text/javascript" src="//www.highperformanceformat.com/256666e63f97e029da958066a2a4ad2b/invoke.js"><\/script>
+        `;
+      }
+
+      // Native Banner Ad
+      const nativeAd = document.getElementById('adsterra-native');
+      if (nativeAd && !nativeAd.querySelector('script')) {
+        nativeAd.innerHTML = `
+          <script async="async" data-cfasync="false" src="//pl27834999.effectivegatecpm.com/cf6cf52368f543a434eb6b67b3921d14/invoke.js"><\/script>
+          <div id="container-cf6cf52368f543a434eb6b67b3921d14"><\/div>
+        `;
+      }
+    }
+
+    // Load ads when DOM is ready
+    document.addEventListener('DOMContentLoaded', function() {
+      // Load ads after a short delay to ensure DOM is fully ready
+      setTimeout(loadAdsterraAds, 500);
+      
+      // Also reload ads when navigating between screens
+      const originalShowScreen = window.showScreen;
+      if (originalShowScreen) {
+        window.showScreen = function(screen) {
+          originalShowScreen(screen);
+          // Reload ads after screen transition
+          setTimeout(loadAdsterraAds, 300);
+        };
+      }
+    });
+
+    // Also try to load ads if DOM is already ready
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      setTimeout(loadAdsterraAds, 500);
+    }
+  </script>
 
   <script>
     // Firebase configuration
