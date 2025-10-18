@@ -37,7 +37,14 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
-</head>
+  
+  <!-- Preload critical resources -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://www.gstatic.com">
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -221,6 +228,16 @@
       justify-content: center;
       padding: 20px;
     }
+
+    /* Performance optimizations */
+    .will-change {
+      will-change: transform, opacity;
+    }
+    
+    /* Footer with same green as top */
+    .footer-green {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    }
   </style>
 </head>
 <body>
@@ -277,7 +294,7 @@
         </div>
       </div>
       
-      <footer class="text-center py-6 border-t mt-12 text-gray-600 bg-white">
+      <footer class="text-center py-6 border-t mt-12 text-gray-600 footer-green">
         <p>
           © 2025 · Made by 
           <a href="about_us.html" class="text-green-600 hover:underline">Aren Group</a> · All rights reserved
@@ -601,6 +618,10 @@
   </div>
 
   <script>
+    // Performance optimizations
+    let isInitialized = false;
+    let debounceTimer;
+
     // Firebase configuration
     const firebaseConfig = {
       apiKey: "AIzaSyCaf1l3m9gpGkP3Y-dNtTzj0JLvX7b7gnc",
@@ -611,11 +632,28 @@
       appId: "1:733035293529:web:2668b4cc168c94e0793a48"
     };
 
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
+    // Initialize Firebase only once
+    if (!firebase.apps.length) {
+      firebase.initializeApp(firebaseConfig);
+    }
     const db = firebase.firestore();
 
+    // Debounce function for performance
+    function debounce(func, wait) {
+      return function executedFunction(...args) {
+        const later = () => {
+          clearTimeout(debounceTimer);
+          func(...args);
+        };
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(later, wait);
+      };
+    }
+
     document.addEventListener('DOMContentLoaded', function() {
+      if (isInitialized) return;
+      isInitialized = true;
+
       // State management
       let currentVote = null;
       let myVotes = {};
@@ -710,6 +748,14 @@
         [welcomeScreen, createVoteForm, voteCreatedScreen, votingScreen, voteSubmittedScreen, resultsScreen]
           .forEach(el => el.classList.add('hidden'));
         screen.classList.remove('hidden');
+        
+        // Update footer text in results screen
+        if (screen === resultsScreen) {
+          const footerText = screen.querySelector('.text-gray-500');
+          if (footerText) {
+            footerText.textContent = 'Created by VotingSystem';
+          }
+        }
       }
       
       // Event listeners for navigation
@@ -812,7 +858,7 @@
         
         showLoading();
         
-        // Create vote object - REMOVED CARD UPLOAD FIELDS
+        // Create vote object
         const voteId = generateVoteId();
         const creatorId = generateUserId();
         
@@ -956,7 +1002,7 @@
           submitButton.classList.add('opacity-50', 'cursor-not-allowed');
         }
         
-        // Show security fields if required - REMOVED CARD UPLOAD
+        // Show security fields if required
         const securityFields = document.getElementById('security-fields');
         if (currentVote.requireName) {
           securityFields.classList.remove('hidden');
@@ -986,7 +1032,7 @@
         });
       }
       
-      // Submit vote - IMPROVED with rate limiting and no card upload
+      // Submit vote - IMPROVED with rate limiting
       document.getElementById('submit-vote').addEventListener('click', async () => {
         // Rate limiting cooldown
         const now = Date.now();
@@ -1009,7 +1055,7 @@
           return;
         }
 
-        // Validate security requirements - REMOVED CARD UPLOAD
+        // Validate security requirements
         let voterName = '';
         if (currentVote.requireName) {
           voterName = document.getElementById('voter-name').value.trim();
@@ -1028,7 +1074,7 @@
 
         const optionIndex = parseInt(selectedOption.value);
         
-        // Create voter data - SIMPLIFIED (no card data)
+        // Create voter data
         const voterData = {
           name: voterName || 'Anonymous',
           votedFor: currentVote.options[optionIndex].text,
@@ -1058,7 +1104,7 @@
             return;
           }
 
-          // Update the vote in Firebase - OPTIMIZED DATA STRUCTURE
+          // Update the vote in Firebase
           const updatedOptions = [...currentVoteData.options];
           updatedOptions[optionIndex].votes = (updatedOptions[optionIndex].votes || 0) + 1;
           
@@ -1280,7 +1326,7 @@
           setTimeout(() => shareMessage.classList.add('hidden'), 2000);
         };
         
-        // Show voters list if there are voters - SIMPLIFIED (no card type)
+        // Show voters list if there are voters
         const votersList = document.getElementById('voters-list');
         if (vote.voters && vote.voters.length > 0) {
           votersList.classList.remove('hidden');
@@ -1356,7 +1402,7 @@
         });
       }
       
-      // Remove vote functionality - FIXED VERSION
+      // Remove vote functionality
       async function removeVote(voteId) {
         if (confirm('Are you sure you want to delete this vote? This action cannot be undone.')) {
           showLoading();
