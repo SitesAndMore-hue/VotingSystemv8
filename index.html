@@ -249,7 +249,10 @@
       </div>
       
       <div class="mt-12 text-center text-gray-500 slide-up">
-        <p>Created by Aren Group</p>
+      <p>by <a href="about_us.html" style="color:#9ca3af;text-decoration:none;" 
+onmouseover="this.style.color='#fff'" 
+onmouseout="this.style.color='#9ca3af'">Aren Group</a></p>
+
       </div>
     </div>
 
@@ -977,7 +980,7 @@
           );
           if (!voteDoc.exists) {
             hideLoading();
-            alert('Vote not found. It may have been deleted.');
+            alert('Vote not found. It may have been deleted or doesn't exist.');
             return;
           }
 
