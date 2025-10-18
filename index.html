@@ -37,7 +37,7 @@
     "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
   }
   </script>
-</head>
+  
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -61,6 +61,9 @@
       font-family: 'Inter', sans-serif;
       background-color: var(--background);
       color: var(--foreground);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
     }
     
     .fade-in {
@@ -198,9 +201,30 @@
       font-size: 1.125rem;
       margin-bottom: 1.5rem;
     }
+
+    /* Fix for the main app container */
+    #app {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+    }
+
+    /* Ensure screens take full viewport height */
+    .screen {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .screen-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 20px 0;
+    }
   </style>
 </head>
-<body class="min-h-screen bg-gradient-to-br from-green-50 to-green-100">
+<body>
   <!-- Hidden SEO Content for Search Engines -->
   <div class="seo-content hidden md:block">
     <h1>VotingSystem – Free Online Voting Platform</h1>
@@ -219,347 +243,347 @@
     </div>
 
     <!-- Enhanced Welcome Screen -->
-    <div id="welcome-screen" class="flex flex-col items-center justify-center min-h-screen px-4 py-12">
-      <div class="text-center mb-12 slide-up">
-        <div class="mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-            <path d="M9 12l2 2 4-4"></path>
-            <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
-          </svg>
+    <div id="welcome-screen" class="screen">
+      <div class="screen-content">
+        <div class="text-center mb-12 slide-up">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+              <path d="M9 12l2 2 4-4"></path>
+              <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
+            </svg>
+          </div>
+          <h1 class="text-5xl font-bold text-gray-800 mb-4">VotingSystem</h1>
+          <p class="text-xl text-gray-600 max-w-md mx-auto">Create and share votes with anyone!</p>
         </div>
-        <h1 class="text-5xl font-bold text-gray-800 mb-4">VotingSystem</h1>
-        <p class="text-xl text-gray-600 max-w-md mx-auto">Create and share votes with anyone!</p>
+        
+        <div class="card p-8 max-w-md w-full mx-auto scale-in">
+          <div class="text-center mb-8">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-2">Welcome to VotingSystem</h2>
+            <p class="text-gray-600">Create your first shareable vote in seconds</p>
+          </div>
+          
+          <button id="create-vote-btn" class="w-full btn-primary py-4 px-6 rounded-lg font-medium text-lg pulse-glow">
+            Create New Vote
+          </button>
+          
+          <button id="view-results-btn" class="w-full mt-4 py-3 px-6 border border-green-500 text-green-600 rounded-lg font-medium hover:bg-green-50 transition-colors">
+            View My Votes
+          </button>
+          
+          <div class="mt-3 text-center text-gray-500">
+            <p>Shareable • Secure • Cross-Platform • No Login • Free • Unlimited</p>
+          </div>
+        </div>
       </div>
       
-      <div class="card p-8 max-w-md w-full scale-in">
-        <div class="text-center mb-8">
-          <h2 class="text-2xl font-semibold text-gray-800 mb-2">Welcome to VotingSystem</h2>
-          <p class="text-gray-600">Create your first shareable vote in seconds</p>
+      <footer class="text-center py-6 border-t text-gray-600 bg-white mt-auto">
+        <p>
+          © 2025 · Made by 
+          <a href="about_us.html" class="text-green-600 hover:underline">Aren Group</a> · All rights reserved
+        </p>
+
+        <div class="flex justify-center gap-6 mt-3">
+          <a href="https://github.com/SitesAndMore-hue/VotingSystemv8/" target="_blank" aria-label="GitHub" class="hover:scale-110 transition">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.3-5.467-1.334-5.467-5.931 0-1.31.467-2.381 1.236-3.221-.123-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.242 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.628-5.48 5.922.43.372.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </a>
+
+          <a href="https://www.producthunt.com/products/votingsystem" target="_blank" aria-label="Product Hunt" class="hover:scale-110 transition">
+            <img src="https://cdn-icons-png.flaticon.com/512/2111/2111581.png" alt="Product Hunt" class="w-6 h-6">
+          </a>
+
+          <a href="https://medium.com/@techandmemes/how-to-build-a-simple-online-voting-system-or-poll-100dc85a0044" target="_blank" aria-label="Medium" class="hover:scale-110 transition">
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968906.png" alt="Medium" class="w-6 h-6">
+          </a>
         </div>
-        
-        <button id="create-vote-btn" class="w-full btn-primary py-4 px-6 rounded-lg font-medium text-lg pulse-glow">
-          Create New Vote
-        </button>
-        
-        <button id="view-results-btn" class="w-full mt-4 py-3 px-6 border border-green-500 text-green-600 rounded-lg font-medium hover:bg-green-50 transition-colors">
-          View My Votes
-        </button>
-        
-        <div class="mt-3 text-center text-gray-500">
-          <p>Shareable • Secure • Cross-Platform • No Login • Free • Unlimited</p>
-        </div>
-      </div>
-      
-<footer class="text-center py-6 border-t mt-12 text-gray-600">
-  <!-- Text line -->
-  <p>
-    © 2025 · Made by 
-    <a href="about_us.html" class="text-green-600 hover:underline">Aren Group</a> · All rights reserved
-  </p>
-
-  <!-- Icons line -->
-  <div class="flex justify-center gap-6 mt-3">
-    <!-- GitHub icon -->
-    <a href="https://github.com/SitesAndMore-hue/VotingSystemv8/" target="_blank" aria-label="GitHub" class="hover:scale-110 transition">
-      <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.387-1.333-1.756-1.333-1.756-1.09-.744.083-.729.083-.729 1.205.084 1.84 1.236 1.84 1.236 1.07 1.834 2.807 1.304 3.492.997.108-.775.418-1.304.762-1.604-2.665-.3-5.467-1.334-5.467-5.931 0-1.31.467-2.381 1.236-3.221-.123-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.29-1.552 3.296-1.23 3.296-1.23.655 1.653.242 2.873.12 3.176.77.84 1.235 1.911 1.235 3.221 0 4.61-2.807 5.628-5.48 5.922.43.372.823 1.102.823 2.222 0 1.604-.015 2.896-.015 3.286 0 .322.216.694.825.576C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-      </svg>
-    </a>
-
-    <!-- Product Hunt icon -->
-    <a href="https://www.producthunt.com/products/votingsystem" target="_blank" aria-label="Product Hunt" class="hover:scale-110 transition">
-      <img src="https://cdn-icons-png.flaticon.com/512/2111/2111581.png" alt="Product Hunt" class="w-6 h-6">
-    </a>
-
-    <!-- Medium icon -->
-    <a href="https://medium.com/@techandmemes/how-to-build-a-simple-online-voting-system-or-poll-100dc85a0044" target="_blank" aria-label="Medium" class="hover:scale-110 transition">
-      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968906.png" alt="Medium" class="w-6 h-6">
-    </a>
-  </div>
-</footer>
-
-
-
-</body>
-</html>
-
-      </div>
+      </footer>
     </div>
 
     <!-- Create Vote Form -->
-    <div id="create-vote-form" class="hidden min-h-screen px-4 py-12">
-      <div class="max-w-2xl mx-auto card p-8 slide-up">
-        <div class="flex items-center mb-6">
-          <button id="back-to-welcome" class="mr-4 text-gray-600 hover:text-gray-800 transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 12H5"></path>
-              <path d="M12 19l-7-7 7-7"></path>
-            </svg>
-          </button>
-          <h2 class="text-2xl font-bold text-gray-800">Create a New Vote</h2>
-        </div>
-        
-        <div class="mb-6">
-          <label class="block text-gray-700 font-medium mb-2" for="vote-title">Vote Title</label>
-          <input type="text" id="vote-title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter vote title">
-        </div>
-        
-        <div class="mb-6">
-          <label class="block text-gray-700 font-medium mb-2" for="vote-description">Description</label>
-          <textarea id="vote-description" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" rows="3" placeholder="Enter vote description"></textarea>
-        </div>
-        
-        <div class="mb-6">
-          <label class="block text-gray-700 font-medium mb-2">Options</label>
-          <div id="options-container" class="space-y-3">
-            <div class="flex items-center">
-              <input type="text" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Option 1">
-              <button class="ml-2 text-red-500 hover:text-red-700 remove-option hidden transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 6h18"></path>
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                </svg>
-              </button>
-            </div>
-            <div class="flex items-center">
-              <input type="text" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Option 2">
-              <button class="ml-2 text-red-500 hover:text-red-700 remove-option hidden transition-colors">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M3 6h18"></path>
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-                </svg>
-              </button>
-            </div>
-          </div>
-          <button id="add-option" class="mt-3 text-green-600 hover:text-green-800 flex items-center transition-colors">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-              <path d="M5 12h14"></path>
-              <path d="M12 5v14"></path>
-            </svg>
-            Add another option
-          </button>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="text-lg font-medium text-gray-800 mb-3">Security Options</h3>
-          <div class="space-y-4">
-            <label class="flex items-center">
-              <input type="checkbox" id="require-name" class="mr-3 rounded border-gray-300 text-green-600 focus:ring-green-500">
-              <span class="text-gray-700">Require voter's name</span>
-            </label>
-          </div>
-        </div>
-        
-        <div class="flex space-x-4">
-          <button id="back-to-welcome-2" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
-            Back
-          </button>
-          <button id="create-vote" class="flex-1 btn-primary py-3 px-4 rounded-lg font-medium">
-            Create Vote
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Vote Created Screen -->
-    <div id="vote-created" class="hidden min-h-screen px-4 py-12">
-      <div class="max-w-2xl mx-auto card p-8 text-center scale-in">
-        <div class="mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Vote Created Successfully!</h2>
-        <p class="text-gray-600 mb-6">Share this link with your voters:</p>
-        
-        <div class="mb-8">
-          <div class="flex items-center bg-gray-100 p-3 rounded-lg mb-3">
-            <input type="text" id="vote-link" class="flex-1 bg-transparent border-none outline-none text-gray-800" readonly>
-            <button id="copy-link" class="text-green-600 hover:text-green-800 ml-2 transition-colors">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
-                <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
-              </svg>
-            </button>
-          </div>
-          <p id="copy-message" class="text-sm text-green-600 hidden">Link copied to clipboard!</p>
-        </div>
-        
-        <!-- QR Code Section -->
-        <div class="mb-8">
-          <p class="text-gray-600 mb-4">Or scan this QR code:</p>
-          <div id="qrcode" class="qr-code-container"></div>
-        </div>
-        
-        <button id="go-back-home" class="btn-primary py-3 px-6 rounded-lg font-medium">
-          Go Back Home
-        </button>
-        
-        <p class="text-gray-600 mt-4 text-sm">You can check the results of this vote in "View My Votes".</p>
-      </div>
-    </div>
-
-    <!-- Voting Screen -->
-    <div id="voting-screen" class="hidden min-h-screen px-4 py-12">
-      <div class="max-w-2xl mx-auto card p-8 slide-up">
-        <div class="flex items-center justify-between mb-2">
-          <h2 id="voting-title" class="text-2xl font-bold text-gray-800">Vote Title</h2>
-          <div id="election-ended-badge" class="ended-badge hidden">Election Ended</div>
-        </div>
-        <p id="voting-description" class="text-gray-600 mb-6">Vote description goes here</p>
-        
-        <div id="already-voted-message" class="hidden mb-6 p-4 bg-yellow-100 border border-yellow-400 text-yellow-800 rounded-lg">
-          <p>You have already voted in this election.</p>
-        </div>
-        
-        <div id="election-ended-message" class="hidden mb-6 p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg">
-          <p>This election has ended. Voting is no longer allowed.</p>
-        </div>
-        
-        <div id="security-fields" class="mb-6 space-y-4 hidden">
-          <div id="name-field" class="hidden">
-            <label class="block text-gray-700 font-medium mb-2" for="voter-name">Your Name</label>
-            <input type="text" id="voter-name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter your name">
-          </div>
-        </div>
-        
-        <div class="mb-6">
-          <h3 class="text-lg font-medium text-gray-800 mb-3">Options</h3>
-          <div id="voting-options" class="space-y-3">
-            <!-- Options will be populated here -->
-          </div>
-        </div>
-        
-        <button id="submit-vote" class="w-full btn-primary py-3 px-4 rounded-lg font-medium">
-          Submit Vote
-        </button>
-      </div>
-    </div>
-
-    <!-- Vote Submitted Screen - SIMPLIFIED -->
-    <div id="vote-submitted" class="hidden min-h-screen px-4 py-12">
-      <div class="max-w-2xl mx-auto card p-8 text-center scale-in">
-        <div class="mb-6">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
-            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-            <polyline points="22 4 12 14.01 9 11.01"></polyline>
-          </svg>
-        </div>
-        <h2 class="text-3xl font-bold text-gray-800 mb-4">Thanks for Voting!</h2>
-        <p class="text-gray-600 mb-8">Your vote has been successfully submitted.</p>
-        
-        <button id="create-own-election" class="w-full btn-primary py-3 px-4 rounded-lg font-medium">
-          Create Your Own Election
-        </button>
-        
-        <div class="mt-8 pt-6 border-t border-gray-200">
-          <p class="text-gray-500 text-sm">Created by VotingSystem</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Results Screen -->
-    <div id="results-screen" class="hidden min-h-screen px-4 py-12">
-      <div class="max-w-4xl mx-auto card p-8 slide-up">
-        <div class="flex items-center justify-between mb-6">
-          <div class="flex items-center">
-            <button id="back-to-welcome-from-results" class="mr-4 text-gray-600 hover:text-gray-800 transition-colors">
+    <div id="create-vote-form" class="screen hidden">
+      <div class="screen-content">
+        <div class="max-w-2xl mx-auto card p-8 slide-up">
+          <div class="flex items-center mb-6">
+            <button id="back-to-welcome" class="mr-4 text-gray-600 hover:text-gray-800 transition-colors">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M19 12H5"></path>
                 <path d="M12 19l-7-7 7-7"></path>
               </svg>
             </button>
-            <h2 class="text-2xl font-bold text-gray-800">My Created Votes</h2>
-          </div>
-          <div class="flex space-x-2">
-            <button id="remove-vote-btn" class="text-red-600 hover:text-red-800 flex items-center transition-colors hidden">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
-                <path d="M3 6h18"></path>
-                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-              </svg>
-              Remove Vote
-            </button>
-          </div>
-        </div>
-        
-        <div class="mb-6">
-          <label class="block text-gray-700 font-medium mb-2" for="vote-select">Select Vote</label>
-          <select id="vote-select" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
-            <option value="">Choose a vote...</option>
-          </select>
-        </div>
-        
-        <div id="no-votes-message" class="text-center py-12 hidden">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4">
-            <path d="M9 12l2 2 4-4"></path>
-            <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
-          </svg>
-          <h3 class="text-xl font-semibold text-gray-600 mb-2">No Votes Created Yet</h3>
-          <p class="text-gray-500">Create your first vote to get started!</p>
-          <button id="create-first-vote" class="mt-4 btn-primary py-2 px-6 rounded-lg">
-            Create Your First Vote
-          </button>
-        </div>
-        
-        <div id="results-content" class="hidden">
-          <div class="flex justify-between items-center mb-6">
-            <div>
-              <h3 id="results-title" class="text-xl font-bold text-gray-800"></h3>
-              <p id="results-description" class="text-gray-600"></p>
-            </div>
-            <div id="vote-stats" class="text-right">
-              <p class="text-gray-700"><span id="total-voters" class="font-semibold">0</span> voters</p>
-              <p id="winner-info" class="text-green-600 font-semibold"></p>
-              <p id="election-status" class="text-sm mt-1"></p>
-            </div>
-          </div>
-          
-          <div class="mb-8">
-            <h4 class="text-lg font-medium text-gray-800 mb-4">Results Chart</h4>
-            <div class="h-64">
-              <canvas id="results-chart"></canvas>
-            </div>
+            <h2 class="text-2xl font-bold text-gray-800">Create a New Vote</h2>
           </div>
           
           <div class="mb-6">
-            <h4 class="text-lg font-medium text-gray-800 mb-3">Share This Vote</h4>
-            <div class="flex items-center bg-gray-100 p-3 rounded-lg">
-              <input type="text" id="share-vote-link" class="flex-1 bg-transparent border-none outline-none text-gray-800" readonly>
-              <button id="copy-share-link" class="text-green-600 hover:text-green-800 ml-2 transition-colors">
+            <label class="block text-gray-700 font-medium mb-2" for="vote-title">Vote Title</label>
+            <input type="text" id="vote-title" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter vote title">
+          </div>
+          
+          <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-2" for="vote-description">Description</label>
+            <textarea id="vote-description" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" rows="3" placeholder="Enter vote description"></textarea>
+          </div>
+          
+          <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-2">Options</label>
+            <div id="options-container" class="space-y-3">
+              <div class="flex items-center">
+                <input type="text" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Option 1">
+                <button class="ml-2 text-red-500 hover:text-red-700 remove-option hidden transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                  </svg>
+                </button>
+              </div>
+              <div class="flex items-center">
+                <input type="text" class="flex-1 p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Option 2">
+                <button class="ml-2 text-red-500 hover:text-red-700 remove-option hidden transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                    <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <button id="add-option" class="mt-3 text-green-600 hover:text-green-800 flex items-center transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                <path d="M5 12h14"></path>
+                <path d="M12 5v14"></path>
+              </svg>
+              Add another option
+            </button>
+          </div>
+          
+          <div class="mb-6">
+            <h3 class="text-lg font-medium text-gray-800 mb-3">Security Options</h3>
+            <div class="space-y-4">
+              <label class="flex items-center">
+                <input type="checkbox" id="require-name" class="mr-3 rounded border-gray-300 text-green-600 focus:ring-green-500">
+                <span class="text-gray-700">Require voter's name</span>
+              </label>
+            </div>
+          </div>
+          
+          <div class="flex space-x-4">
+            <button id="back-to-welcome-2" class="px-4 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition-colors">
+              Back
+            </button>
+            <button id="create-vote" class="flex-1 btn-primary py-3 px-4 rounded-lg font-medium">
+              Create Vote
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vote Created Screen -->
+    <div id="vote-created" class="screen hidden">
+      <div class="screen-content">
+        <div class="max-w-2xl mx-auto card p-8 text-center scale-in">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Vote Created Successfully!</h2>
+          <p class="text-gray-600 mb-6">Share this link with your voters:</p>
+          
+          <div class="mb-8">
+            <div class="flex items-center bg-gray-100 p-3 rounded-lg mb-3">
+              <input type="text" id="vote-link" class="flex-1 bg-transparent border-none outline-none text-gray-800" readonly>
+              <button id="copy-link" class="text-green-600 hover:text-green-800 ml-2 transition-colors">
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
                   <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
                 </svg>
               </button>
             </div>
-            <p id="share-copy-message" class="text-sm text-green-600 hidden mt-2">Link copied to clipboard!</p>
+            <p id="copy-message" class="text-sm text-green-600 hidden">Link copied to clipboard!</p>
           </div>
           
-          <div id="voters-list" class="hidden">
-            <h4 class="text-lg font-medium text-gray-800 mb-4">Voters</h4>
-            <div class="overflow-x-auto">
-              <table class="w-full border-collapse">
-                <thead>
-                  <tr class="bg-gray-100">
-                    <th class="p-3 text-left text-gray-700 border border-gray-300">Voter Name</th>
-                    <th class="p-3 text-left text-gray-700 border border-gray-300">Voted For</th>
-                    <th class="p-3 text-left text-gray-700 border border-gray-300">Time</th>
-                  </tr>
-                </thead>
-                <tbody id="voters-table-body">
-                  <!-- Voters will be populated here -->
-                </tbody>
-              </table>
+          <!-- QR Code Section -->
+          <div class="mb-8">
+            <p class="text-gray-600 mb-4">Or scan this QR code:</p>
+            <div id="qrcode" class="qr-code-container"></div>
+          </div>
+          
+          <button id="go-back-home" class="btn-primary py-3 px-6 rounded-lg font-medium">
+            Go Back Home
+          </button>
+          
+          <p class="text-gray-600 mt-4 text-sm">You can check the results of this vote in "View My Votes".</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Voting Screen -->
+    <div id="voting-screen" class="screen hidden">
+      <div class="screen-content">
+        <div class="max-w-2xl mx-auto card p-8 slide-up">
+          <div class="flex items-center justify-between mb-2">
+            <h2 id="voting-title" class="text-2xl font-bold text-gray-800">Vote Title</h2>
+            <div id="election-ended-badge" class="ended-badge hidden">Election Ended</div>
+          </div>
+          <p id="voting-description" class="text-gray-600 mb-6">Vote description goes here</p>
+          
+          <div id="already-voted-message" class="hidden mb-6 p-4 bg-yellow-100 border border-yellow-400 text-yellow-800 rounded-lg">
+            <p>You have already voted in this election.</p>
+          </div>
+          
+          <div id="election-ended-message" class="hidden mb-6 p-4 bg-red-100 border border-red-400 text-red-800 rounded-lg">
+            <p>This election has ended. Voting is no longer allowed.</p>
+          </div>
+          
+          <div id="security-fields" class="mb-6 space-y-4 hidden">
+            <div id="name-field" class="hidden">
+              <label class="block text-gray-700 font-medium mb-2" for="voter-name">Your Name</label>
+              <input type="text" id="voter-name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent" placeholder="Enter your name">
             </div>
           </div>
+          
+          <div class="mb-6">
+            <h3 class="text-lg font-medium text-gray-800 mb-3">Options</h3>
+            <div id="voting-options" class="space-y-3">
+              <!-- Options will be populated here -->
+            </div>
+          </div>
+          
+          <button id="submit-vote" class="w-full btn-primary py-3 px-4 rounded-lg font-medium">
+            Submit Vote
+          </button>
         </div>
-        
-        <div class="mt-8 pt-6 border-t border-gray-200 text-center">
-          <p class="text-gray-500 text-sm">Created by VotingSystem</p>
+      </div>
+    </div>
+
+    <!-- Vote Submitted Screen - SIMPLIFIED -->
+    <div id="vote-submitted" class="screen hidden">
+      <div class="screen-content">
+        <div class="max-w-2xl mx-auto card p-8 text-center scale-in">
+          <div class="mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+              <polyline points="22 4 12 14.01 9 11.01"></polyline>
+            </svg>
+          </div>
+          <h2 class="text-3xl font-bold text-gray-800 mb-4">Thanks for Voting!</h2>
+          <p class="text-gray-600 mb-8">Your vote has been successfully submitted.</p>
+          
+          <button id="create-own-election" class="w-full btn-primary py-3 px-4 rounded-lg font-medium">
+            Create Your Own Election
+          </button>
+          
+          <div class="mt-8 pt-6 border-t border-gray-200">
+            <p class="text-gray-500 text-sm">Created by VotingSystem</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Screen -->
+    <div id="results-screen" class="screen hidden">
+      <div class="screen-content">
+        <div class="max-w-4xl mx-auto card p-8 slide-up">
+          <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center">
+              <button id="back-to-welcome-from-results" class="mr-4 text-gray-600 hover:text-gray-800 transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M19 12H5"></path>
+                  <path d="M12 19l-7-7 7-7"></path>
+                </svg>
+              </button>
+              <h2 class="text-2xl font-bold text-gray-800">My Created Votes</h2>
+            </div>
+            <div class="flex space-x-2">
+              <button id="remove-vote-btn" class="text-red-600 hover:text-red-800 flex items-center transition-colors hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-1">
+                  <path d="M3 6h18"></path>
+                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+                </svg>
+                Remove Vote
+              </button>
+            </div>
+          </div>
+          
+          <div class="mb-6">
+            <label class="block text-gray-700 font-medium mb-2" for="vote-select">Select Vote</label>
+            <select id="vote-select" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent">
+              <option value="">Choose a vote...</option>
+            </select>
+          </div>
+          
+          <div id="no-votes-message" class="text-center py-12 hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4">
+              <path d="M9 12l2 2 4-4"></path>
+              <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
+            </svg>
+            <h3 class="text-xl font-semibold text-gray-600 mb-2">No Votes Created Yet</h3>
+            <p class="text-gray-500">Create your first vote to get started!</p>
+            <button id="create-first-vote" class="mt-4 btn-primary py-2 px-6 rounded-lg">
+              Create Your First Vote
+            </button>
+          </div>
+          
+          <div id="results-content" class="hidden">
+            <div class="flex justify-between items-center mb-6">
+              <div>
+                <h3 id="results-title" class="text-xl font-bold text-gray-800"></h3>
+                <p id="results-description" class="text-gray-600"></p>
+              </div>
+              <div id="vote-stats" class="text-right">
+                <p class="text-gray-700"><span id="total-voters" class="font-semibold">0</span> voters</p>
+                <p id="winner-info" class="text-green-600 font-semibold"></p>
+                <p id="election-status" class="text-sm mt-1"></p>
+              </div>
+            </div>
+            
+            <div class="mb-8">
+              <h4 class="text-lg font-medium text-gray-800 mb-4">Results Chart</h4>
+              <div class="h-64">
+                <canvas id="results-chart"></canvas>
+              </div>
+            </div>
+            
+            <div class="mb-6">
+              <h4 class="text-lg font-medium text-gray-800 mb-3">Share This Vote</h4>
+              <div class="flex items-center bg-gray-100 p-3 rounded-lg">
+                <input type="text" id="share-vote-link" class="flex-1 bg-transparent border-none outline-none text-gray-800" readonly>
+                <button id="copy-share-link" class="text-green-600 hover:text-green-800 ml-2 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path>
+                    <rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect>
+                  </svg>
+                </button>
+              </div>
+              <p id="share-copy-message" class="text-sm text-green-600 hidden mt-2">Link copied to clipboard!</p>
+            </div>
+            
+            <div id="voters-list" class="hidden">
+              <h4 class="text-lg font-medium text-gray-800 mb-4">Voters</h4>
+              <div class="overflow-x-auto">
+                <table class="w-full border-collapse">
+                  <thead>
+                    <tr class="bg-gray-100">
+                      <th class="p-3 text-left text-gray-700 border border-gray-300">Voter Name</th>
+                      <th class="p-3 text-left text-gray-700 border border-gray-300">Voted For</th>
+                      <th class="p-3 text-left text-gray-700 border border-gray-300">Time</th>
+                    </tr>
+                  </thead>
+                  <tbody id="voters-table-body">
+                    <!-- Voters will be populated here -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          
+          <div class="mt-8 pt-6 border-t border-gray-200 text-center">
+            <p class="text-gray-500 text-sm">Created by VotingSystem</p>
+          </div>
         </div>
       </div>
     </div>
