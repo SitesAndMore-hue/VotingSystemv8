@@ -5,4 +5,29 @@
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/The_Best_Online_Voting_Tools_Why_VotingSystem_is_#1.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/The_Safest_Online_Polling_Platform_Why_VotingSystem_Leads_in_Security.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/VotingSystem_vs_Other_Online_Polling_Platforms_The_Clear_Winner.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/about_us.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/what_is_the_best_online_voting_platform.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
 </urlset>
