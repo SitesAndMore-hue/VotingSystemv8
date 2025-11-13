@@ -3,43 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VotingSystem - Best Online Voting Platform</title>
+    <title>VotingSystem - Secure & Free Online Voting Platform</title>
+
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="VotingSystem is the best online voting platform. Create secure, user-friendly polls in seconds with no registration. Free, fast, and reliable.">
+    <meta name="keywords" content="online voting, free polls, secure voting, vote online, real-time results, democratic polls">
+    <meta name="author" content="VotingSystem">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VotingSystem - Secure & Free Online Voting Platform">
+    <meta property="og:description" content="Create secure, user-friendly polls in seconds with VotingSystem. No registration required, real-time results, completely free.">
+    <meta property="og:url" content="https://votingsystem-nu.vercel.app/">
+    <meta property="og:image" content="https://votingsystem-nu.vercel.app/og-image.png">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="VotingSystem - Secure & Free Online Voting Platform">
+    <meta name="twitter:description" content="Create secure, user-friendly polls in seconds with VotingSystem. No registration required, real-time results, completely free.">
+    <meta name="twitter:image" content="https://votingsystem-nu.vercel.app/og-image.png">
+
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
             --primary: #3DDC84;
             --primary-dark: #34C275;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
         }
-        
+
         .hero-gradient {
             background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
         }
-        
+
         .feature-card {
             transition: all 0.3s ease;
             border: 1px solid #e5e7eb;
         }
-        
+
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        
+
         .btn-primary {
             background-color: var(--primary);
             transition: all 0.3s ease;
         }
-        
+
         .btn-primary:hover {
             background-color: var(--primary-dark);
             transform: translateY(-2px);
         }
-        
+
         .stat-number {
             font-size: 3rem;
             font-weight: 700;
@@ -48,9 +69,25 @@
             -webkit-text-fill-color: transparent;
         }
     </style>
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "VotingSystem",
+      "url": "https://votingsystem-nu.vercel.app/",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://votingsystem-nu.vercel.app/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
 </head>
 <body class="bg-white">
-    <!-- Navigation -->
+
+<!-- Navigation -->
     <nav class="bg-white shadow-sm py-4 sticky top-0 z-50">
         <div class="container mx-auto px-4 flex justify-between items-center">
             <div class="flex items-center">
