@@ -1,33 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- MAIN PAGES -->
   <url>
     <loc>https://votingsystem-nu.vercel.app/</loc>
-    <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+
   <url>
-    <loc>https://votingsystem-nu.vercel.app/The_Best_Online_Voting_Tools_Why_VotingSystem_is_#1.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://votingsystem-nu.vercel.app/The_Safest_Online_Polling_Platform_Why_VotingSystem_Leads_in_Security.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://votingsystem-nu.vercel.app/VotingSystem_vs_Other_Online_Polling_Platforms_The_Clear_Winner.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://votingsystem-nu.vercel.app/about_us.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://votingsystem-nu.vercel.app/what_is_the_best_online_voting_platform.html</loc>
-    <changefreq>monthly</changefreq>
+    <loc>https://votingsystem-nu.vercel.app/VotingSystem_Education-Comprehensive_Voting_&_Democracy_Resources.html</loc>
     <priority>0.9</priority>
   </url>
+
+  <!-- HIGH PRIORITY CONTENT -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Secure Online Voting Platforms Complete Guide for Organizations.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/The_Best_Online_Voting_Tools_Why_VotingSystem_is_#1.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/VotingSystem_vs_Other_Online_Polling_Platforms_The_Clear_Winner.html</loc>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- MEDIUM PRIORITY CONTENT -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Official_website_of_VotingSystem.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/The_Safest_Online_Polling_Platform_Why_VotingSystem_Leads_in_Security.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/what_is_the_best_online_voting_platform.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/about_us.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/VotingSystem_FAQ_Answers_to_Common_Voting_Questions.html</loc>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- CATEGORY: ELECTION SECURITY -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Election_Security_101_How_Votes_Are_Counted_and_Protected.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- CATEGORY: VOTER BEHAVIOR & ANALYSIS -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/The_Science_Behind_Voter_Behavior_Why_People_Change_Their_Minds.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/The_Role_of_Media_and_Polls_in_Shaping_Public_Opinion_A_2024_Analysis.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- CATEGORY: SOCIETY & DEMOCRACY -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Freedom_of_Voting_The_Fundamental_Right_in_Democratic_Societies.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Democratic_Voting_The_Foundation_of_Free_Societies.html</loc>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Voting_and_Government_in_Ancient_Greece_The_Birth_of_Democracy.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- CATEGORY: VOTER PARTICIPATION -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Why_Young_Voters_Don't_Show_Up_The_Hidden_Factors.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Silent_Voices_Why_Certain_Demographics_Routinely_Dont_Show_Up_to_Vote_and_What_Were_Missing.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- CATEGORY: ELECTION IRREGULARITIES -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Countries_With_Rigged_Elections_ Analysis_of_Countries_with_Election_Irregularities.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Countries_with_Documented_Election_Irregularities_A_2024 _Analysis.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- TOOLS -->
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/Password Strength Checker and Generator.html</loc>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://votingsystem-nu.vercel.app/What Is My IP.html</loc>
+    <priority>0.4</priority>
+  </url>
+
 </urlset>
