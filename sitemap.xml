@@ -8,18 +8,18 @@
   </url>
 
   <url>
-    <loc>https://votingsystem-nu.vercel.app/VotingSystem_Education-Comprehensive_Voting_&_Democracy_Resources.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/VotingSystem_Education-Comprehensive_Voting_and_Democracy_Resources.html</loc>
     <priority>0.9</priority>
   </url>
 
   <!-- HIGH PRIORITY CONTENT -->
   <url>
-    <loc>https://votingsystem-nu.vercel.app/Secure Online Voting Platforms Complete Guide for Organizations.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/Secure_Online_Voting_Platforms_Complete_Guide_for_Organizations.html</loc>
     <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://votingsystem-nu.vercel.app/The_Best_Online_Voting_Tools_Why_VotingSystem_is_#1.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/The_Best_Online_Voting_Tools_Why_VotingSystem_is_Number1.html</loc>
     <priority>0.8</priority>
   </url>
 
@@ -67,7 +67,7 @@
   </url>
 
   <url>
-    <loc>https://votingsystem-nu.vercel.app/The_Role_of_Media_and_Polls_in_Shaping_Public_Opinion_A_2024_Analysis.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/The_Role_of_Media_and_Polls_in_Shaping_Public_Opinion_2024_Analysis.html</loc>
     <priority>0.6</priority>
   </url>
 
@@ -89,7 +89,7 @@
 
   <!-- CATEGORY: VOTER PARTICIPATION -->
   <url>
-    <loc>https://votingsystem-nu.vercel.app/Why_Young_Voters_Don't_Show_Up_The_Hidden_Factors.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/Why_Young_Voters_Dont_Show_Up_The_Hidden_Factors.html</loc>
     <priority>0.5</priority>
   </url>
 
@@ -100,24 +100,24 @@
 
   <!-- CATEGORY: ELECTION IRREGULARITIES -->
   <url>
-    <loc>https://votingsystem-nu.vercel.app/Countries_With_Rigged_Elections_ Analysis_of_Countries_with_Election_Irregularities.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/Countries_With_Rigged_Elections_Analysis_of_Countries_with_Election_Irregularities.html</loc>
     <priority>0.5</priority>
   </url>
 
   <url>
-    <loc>https://votingsystem-nu.vercel.app/Countries_with_Documented_Election_Irregularities_A_2024 _Analysis.html</loc>
+    <loc>https://votingsystem-nu.vercel.app/Countries_with_Documented_Election_Irregularities_2024_Analysis.html</loc>
     <priority>0.5</priority>
   </url>
 
-  <!-- TOOLS -->
+  <!-- TOOLS (HIGH PRIORITY 0.9) -->
   <url>
-    <loc>https://votingsystem-nu.vercel.app/Password Strength Checker and Generator.html</loc>
-    <priority>0.5</priority>
+    <loc>https://votingsystem-nu.vercel.app/Password_Strength_Checker_and_Generator.html</loc>
+    <priority>0.9</priority>
   </url>
 
   <url>
-    <loc>https://votingsystem-nu.vercel.app/What Is My IP.html</loc>
-    <priority>0.4</priority>
+    <loc>https://votingsystem-nu.vercel.app/What_Is_My_IP.html</loc>
+    <priority>0.9</priority>
   </url>
 
 </urlset>
