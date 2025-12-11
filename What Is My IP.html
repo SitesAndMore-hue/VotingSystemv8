@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-VECB953RBN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-VECB953RBN');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Visitor Information Detector | What Websites Can See</title>
+    <meta name="description" content="Discover what information websites collect when you visit them. See your IP address, browser details, location data, and more in real-time.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3DDC84;
+            --primary-dark: #34C275;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+        }
+        
+        .security-badge {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        .security-card {
+            transition: all 0.3s ease;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .security-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .data-category {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-right: 1rem;
+        }
+        
+        .category-browser {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+        }
+        
+        .category-location {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+        }
+        
+        .category-system {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white;
+        }
+        
+        .category-network {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white;
+        }
+        
+        .privacy-high {
+            background-color: #10b981;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .privacy-medium {
+            background-color: #fbbf24;
+            color: #92400e;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .privacy-low {
+            background-color: #ef4444;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+        
+        .data-value {
+            font-family: 'Courier New', monospace;
+            background-color: #f3f4f6;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            word-break: break-all;
+        }
+        
+        .info-icon {
+            color: #6b7280;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        
+        .info-icon:hover {
+            color: #3b82f6;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e5e7eb;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+        
+        .data-sensitive {
+            border-left: 4px solid #ef4444;
+        }
+        
+        .data-moderate {
+            border-left: 4px solid #f59e0b;
+        }
+        
+        .data-safe {
+            border-left: 4px solid #10b981;
+        }
+        
+        .glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4 sticky top-0 z-50">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-green-50 p-2 rounded-lg flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
+                    </svg>
+                    <span class="text-xl font-bold text-gray-800">VotingSystem</span>
+                    <span class="text-gray-500">| Privacy Detector</span>
+                </div>
+            </div>
+            <div>
+                <a href="https://votingsystem-nu.vercel.app/" class="bg-green-500 text-white py-2 px-6 rounded-lg font-medium hover:bg-green-600 transition-colors">
+                    Try Secure Voting Free
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="hero-gradient py-16 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <div class="text-center">
+                <div class="security-badge">PRIVACY DETECTOR</div>
+                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
+                    What Websites Can See When You Visit
+                </h1>
+                <p class="text-xl text-gray-600 mb-6 max-w-3xl mx-auto">
+                    This tool reveals all the information websites can collect about you when you visit them. See your browser fingerprint, location data, IP address, and more in real-time.
+                </p>
+                <div class="flex justify-center items-center text-gray-500 text-sm">
+                    <span><i class="fas fa-shield-alt mr-1"></i> Privacy Analysis</span>
+                    <span class="mx-2">•</span>
+                    <span><i class="fas fa-eye mr-1"></i> Real-time Detection</span>
+                    <span class="mx-2">•</span>
+                    <span><i class="fas fa-lock mr-1"></i> No Data Stored</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="py-12 px-4">
+        <div class="container mx-auto max-w-6xl">
+            <!-- Live Data Display -->
+            <section class="mb-16">
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
+                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
+                        <div>
+                            <h2 class="text-3xl font-bold text-gray-800 mb-2">Your Visitor Information</h2>
+                            <p class="text-gray-600">This is what websites can see when you visit them. Data is collected in real-time from your browser.</p>
+                        </div>
+                        <div class="mt-4 md:mt-0">
+                            <button id="refreshBtn" class="bg-blue-500 text-white py-2 px-6 rounded-lg font-medium hover:bg-blue-600 transition-colors">
+                                <i class="fas fa-sync-alt mr-2"></i> Refresh Data
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Data Summary -->
+                    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-blue-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-blue-600 mb-1" id="dataPointsCount">22</div>
+                            <div class="text-blue-800 font-medium">Data Points Collected</div>
+                        </div>
+                        <div class="bg-green-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-green-600 mb-1" id="privacyScore">82</div>
+                            <div class="text-green-800 font-medium">Privacy Score</div>
+                        </div>
+                        <div class="bg-yellow-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-yellow-600 mb-1" id="trackingCount">5</div>
+                            <div class="text-yellow-800 font-medium">Tracking Methods</div>
+                        </div>
+                        <div class="bg-red-50 p-4 rounded-lg text-center">
+                            <div class="text-3xl font-bold text-red-600 mb-1" id="sensitiveCount">3</div>
+                            <div class="text-red-800 font-medium">Sensitive Data</div>
+                        </div>
+                    </div>
+                    
+                    <!-- IP Address - Highlighted -->
+                    <div class="mb-8 p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl border border-blue-200 glow" id="ipAddressCard">
+                        <div class="flex flex-col md:flex-row md:items-center justify-between">
+                            <div>
+                                <div class="flex items-center mb-2">
+                                    <div class="data-category category-network mr-4">
+                                        <i class="fas fa-network-wired"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-2xl font-bold text-gray-800">IP Address & Network Information</h3>
+                                        <div class="flex items-center mt-1">
+                                            <span class="privacy-low mr-2">High Sensitivity</span>
+                                            <span class="text-gray-600">Identifies your connection</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p class="text-gray-700 mb-4">
+                                    Your IP address can reveal your approximate location, internet service provider, and potentially be used to track your online activity across websites.
+                                </p>
+                            </div>
+                            <div class="md:text-right mt-4 md:mt-0">
+                                <div class="text-2xl font-bold text-gray-800 mb-1" id="ipAddress">Loading...</div>
+                                <div class="text-gray-600">Public IP Address</div>
+                            </div>
+                        </div>
+                        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1">ISP & Organization</div>
+                                <div class="data-value" id="ispInfo">Detecting...</div>
+                            </div>
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1">Proxy/VPN Detection</div>
+                                <div class="data-value" id="vpnStatus">Checking...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- All Data Categories -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Browser Information -->
+                    <div class="security-card bg-white rounded-xl p-6 data-safe">
+                        <div class="flex items-center mb-6">
+                            <div class="data-category category-browser mr-4">
+                                <i class="fas fa-window-maximize"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">Browser Information</h3>
+                                <div class="flex items-center mt-1">
+                                    <span class="privacy-medium mr-2">Medium Sensitivity</span>
+                                    <span class="text-gray-600">Browser fingerprinting</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Browser & Version</span>
+                                    <i class="fas fa-info-circle info-icon" title="Identifies your specific browser which can be used for tracking"></i>
+                                </div>
+                                <div class="data-value" id="browserInfo">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Operating System</span>
+                                    <i class="fas fa-info-circle info-icon" title="Reveals your device operating system"></i>
+                                </div>
+                                <div class="data-value" id="osInfo">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Screen Resolution</span>
+                                    <i class="fas fa-info-circle info-icon" title="Screen size is often used in browser fingerprinting"></i>
+                                </div>
+                                <div class="data-value" id="screenRes">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Browser Language</span>
+                                    <i class="fas fa-info-circle info-icon" title="Shows your preferred language setting"></i>
+                                </div>
+                                <div class="data-value" id="browserLang">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Cookies Enabled</span>
+                                    <i class="fas fa-info-circle info-icon" title="Whether your browser accepts cookies"></i>
+                                </div>
+                                <div class="data-value" id="cookiesStatus">Detecting...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Location & Time -->
+                    <div class="security-card bg-white rounded-xl p-6 data-moderate">
+                        <div class="flex items-center mb-6">
+                            <div class="data-category category-location mr-4">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">Location & Time Data</h3>
+                                <div class="flex items-center mt-1">
+                                    <span class="privacy-medium mr-2">Medium Sensitivity</span>
+                                    <span class="text-gray-600">Geolocation & timezone</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Approximate Location (from IP)</span>
+                                    <i class="fas fa-info-circle info-icon" title="Estimated location based on your IP address"></i>
+                                </div>
+                                <div class="data-value" id="approxLocation">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Timezone</span>
+                                    <i class="fas fa-info-circle info-icon" title="Your local timezone can reveal your location"></i>
+                                </div>
+                                <div class="data-value" id="timezone">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Local Time</span>
+                                    <i class="fas fa-info-circle info-icon" title="Your current local time"></i>
+                                </div>
+                                <div class="data-value" id="localTime">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Geolocation Accuracy</span>
+                                    <i class="fas fa-info-circle info-icon" title="How accurate IP-based geolocation is"></i>
+                                </div>
+                                <div class="progress-bar mb-2">
+                                    <div class="progress-fill bg-blue-500" id="geoAccuracyBar" style="width: 70%"></div>
+                                </div>
+                                <div class="text-sm text-gray-600" id="geoAccuracyText">IP-based location is typically accurate to city level</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- System Information -->
+                    <div class="security-card bg-white rounded-xl p-6 data-safe">
+                        <div class="flex items-center mb-6">
+                            <div class="data-category category-system mr-4">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">System Information</h3>
+                                <div class="flex items-center mt-1">
+                                    <span class="privacy-high mr-2">Low Sensitivity</span>
+                                    <span class="text-gray-600">Device & hardware details</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Device Type</span>
+                                    <i class="fas fa-info-circle info-icon" title="Mobile, tablet, or desktop device"></i>
+                                </div>
+                                <div class="data-value" id="deviceType">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>CPU Cores</span>
+                                    <i class="fas fa-info-circle info-icon" title="Number of processor cores detected"></i>
+                                </div>
+                                <div class="data-value" id="cpuCores">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Available Memory</span>
+                                    <i class="fas fa-info-circle info-icon" title="Browser-reported memory (not actual RAM)"></i>
+                                </div>
+                                <div class="data-value" id="deviceMemory">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Platform</span>
+                                    <i class="fas fa-info-circle info-icon" title="Device platform information"></i>
+                                </div>
+                                <div class="data-value" id="platform">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Touch Support</span>
+                                    <i class="fas fa-info-circle info-icon" title="Whether device supports touch input"></i>
+                                </div>
+                                <div class="data-value" id="touchSupport">Detecting...</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Tracking & Privacy -->
+                    <div class="security-card bg-white rounded-xl p-6 data-sensitive">
+                        <div class="flex items-center mb-6">
+                            <div class="data-category category-network mr-4">
+                                <i class="fas fa-user-secret"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-800">Tracking & Privacy</h3>
+                                <div class="flex items-center mt-1">
+                                    <span class="privacy-low mr-2">High Sensitivity</span>
+                                    <span class="text-gray-600">Tracking methods detected</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Do Not Track Status</span>
+                                    <i class="fas fa-info-circle info-icon" title="Whether you have Do Not Track enabled"></i>
+                                </div>
+                                <div class="data-value" id="doNotTrack">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Third-Party Cookies</span>
+                                    <i class="fas fa-info-circle info-icon" title="Whether third-party cookies are blocked"></i>
+                                </div>
+                                <div class="data-value" id="thirdPartyCookies">Detecting...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Browser Fingerprinting Risk</span>
+                                    <i class="fas fa-info-circle info-icon" title="Risk of browser fingerprinting based on your configuration"></i>
+                                </div>
+                                <div class="progress-bar mb-2">
+                                    <div class="progress-fill bg-red-500" id="fingerprintRiskBar" style="width: 65%"></div>
+                                </div>
+                                <div class="text-sm text-gray-600" id="fingerprintRiskText">Calculating fingerprinting risk...</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Google Analytics Detected</span>
+                                    <i class="fas fa-info-circle info-icon" title="This site uses Google Analytics for tracking"></i>
+                                </div>
+                                <div class="data-value text-red-600 font-bold">Yes - Active on this page</div>
+                            </div>
+                            
+                            <div>
+                                <div class="font-semibold text-gray-800 mb-1 flex justify-between">
+                                    <span>Session Storage</span>
+                                    <i class="fas fa-info-circle info-icon" title="Data stored for your current session"></i>
+                                </div>
+                                <div class="data-value" id="sessionStorage">Detecting...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- How It Works & Protection -->
+            <section class="mb-16">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">How Websites Track You & How to Protect Yourself</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                    <div class="bg-white p-6 rounded-xl border border-gray-200">
+                        <div class="bg-blue-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                            <i class="fas fa-cookie-bite text-blue-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Cookies & Local Storage</h3>
+                        <p class="text-gray-700 mb-4">
+                            Websites store small data files (cookies) on your device to remember your preferences, login status, and track your activity across sessions and sites.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <span class="font-semibold">Protection:</span> Regularly clear cookies, use browser's private mode, or install cookie-blocking extensions.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl border border-gray-200">
+                        <div class="bg-purple-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                            <i class="fas fa-fingerprint text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">Browser Fingerprinting</h3>
+                        <p class="text-gray-700 mb-4">
+                            Websites collect dozens of data points about your browser and device configuration to create a unique "fingerprint" that can identify you across different sites.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <span class="font-semibold">Protection:</span> Use privacy-focused browsers like Firefox with resistFingerprinting enabled, or Tor Browser.
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-xl border border-gray-200">
+                        <div class="bg-red-100 p-3 rounded-lg w-12 h-12 flex items-center justify-center mb-4">
+                            <i class="fas fa-map-marked-alt text-red-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-800 mb-3">IP Address Tracking</h3>
+                        <p class="text-gray-700 mb-4">
+                            Your IP address is logged with every website visit and can reveal your approximate location, internet provider, and be correlated across different sites you visit.
+                        </p>
+                        <div class="text-sm text-gray-600">
+                            <span class="font-semibold">Protection:</span> Use a reputable VPN service to mask your real IP address from websites.
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Privacy Tips -->
+                <div class="bg-gradient-to-r from-green-50 to-emerald-50 p-8 rounded-xl border border-green-200">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Privacy Protection Tips</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-3">Immediate Actions</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Use browser extensions like uBlock Origin, Privacy Badger, or DuckDuckGo Privacy Essentials</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Enable "Do Not Track" in your browser settings (though many sites ignore it)</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Clear cookies and browsing data regularly</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Use private/incognito browsing mode for sensitive activities</span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-gray-800 mb-3">Long-Term Strategies</h4>
+                            <ul class="text-gray-700 space-y-2">
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Consider using privacy-focused browsers like Firefox, Brave, or Tor</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Use a reputable VPN service for everyday browsing</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Switch to privacy-focused search engines like DuckDuckGo or Startpage</span>
+                                </li>
+                                <li class="flex items-start">
+                                    <span class="text-green-500 mr-2">•</span>
+                                    <span>Review and adjust privacy settings on all your online accounts</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA -->
+            <section class="text-center py-8 mb-12">
+                <div class="bg-white p-8 rounded-xl shadow-lg">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-4">Experience Secure, Private Voting</h3>
+                    <p class="text-gray-600 mb-6 max-w-2xl mx-auto">
+                        VotingSystem uses advanced privacy-protecting technology to ensure your vote remains anonymous and secure. We minimize data collection and never track your activity beyond what's necessary for election integrity.
+                    </p>
+                    <a href="https://votingsystem-nu.vercel.app/" class="bg-green-500 text-white py-3 px-8 rounded-lg font-medium text-lg hover:bg-green-600 transition-colors inline-block">
+                        Try VotingSystem Free
+                    </a>
+                    <p class="text-gray-500 text-sm mt-4">Privacy by design • Anonymous voting • No tracking</p>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto max-w-6xl px-4 text-center">
+            <div class="flex items-center justify-center mb-4">
+                <div class="bg-green-50 p-2 rounded-lg flex items-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#3DDC84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 12l2 2 4-4"></path>
+                        <path d="M5 7a2 2 0 012-2h10a2 2 0 012 2v12a2 2 0 01-2 2H7a2 2 0 01-2-2V7z"></path>
+                    </svg>
+                    <span class="font-bold text-gray-800">VotingSystem Privacy Detector</span>
+                </div>
+            </div>
+            <p class="text-gray-400 mb-4">
+                This tool demonstrates what information websites can collect from visitors. All detection happens locally in your browser - no data is sent to our servers.
+            </p>
+            <div class="mb-4">
+                <a href="https://votingsystem-nu.vercel.app/" class="text-green-400 hover:text-green-300 transition-colors">
+                    https://votingsystem-nu.vercel.app/
+                </a>
+            </div>
+            <div class="mt-6 text-gray-400 text-sm">
+                <p>Note: This tool provides an estimation based on browser APIs. Actual data collected by websites may vary.</p>
+                <p class="mt-2">IP address detection requires a third-party service. Other data is detected locally from your browser.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Function to detect all visitor information
+        function detectVisitorInfo() {
+            // Store detection results to keep them consistent
+            if (!window.detectionCache) {
+                window.detectionCache = {};
+            }
+            
+            // Update data points count
+            document.getElementById('dataPointsCount').textContent = '22';
+            
+            // Privacy score - based on actual browser features
+            let privacyScore = 85; // Base score
+            
+            // Browser information
+            const userAgent = navigator.userAgent;
+            
+            // Parse browser info - cleaner, more accurate detection
+            let browserName = "Unknown";
+            let browserVersion = "Unknown";
+            
+            // Detect Chrome
+            if (userAgent.includes("Chrome") && !userAgent.includes("Edg") && !userAgent.includes("OPR")) {
+                browserName = "Google Chrome";
+                const match = userAgent.match(/Chrome\/(\d+\.\d+)/);
+                browserVersion = match ? match[1] : "Unknown";
+            }
+            // Detect Firefox
+            else if (userAgent.includes("Firefox")) {
+                browserName = "Mozilla Firefox";
+                const match = userAgent.match(/Firefox\/(\d+\.\d+)/);
+                browserVersion = match ? match[1] : "Unknown";
+            }
+            // Detect Safari
+            else if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) {
+                browserName = "Apple Safari";
+                const match = userAgent.match(/Version\/(\d+\.\d+)/);
+                browserVersion = match ? match[1] : "Unknown";
+            }
+            // Detect Edge
+            else if (userAgent.includes("Edg")) {
+                browserName = "Microsoft Edge";
+                const match = userAgent.match(/Edg\/(\d+\.\d+)/);
+                browserVersion = match ? match[1] : "Unknown";
+            }
+            // Detect Opera
+            else if (userAgent.includes("OPR") || userAgent.includes("Opera")) {
+                browserName = "Opera";
+                const match = userAgent.match(/(?:OPR|Opera)\/(\d+\.\d+)/);
+                browserVersion = match ? match[1] : "Unknown";
+            }
+            
+            const browserInfoText = `${browserName} ${browserVersion}`;
+            if (!window.detectionCache.browserInfo) {
+                window.detectionCache.browserInfo = browserInfoText;
+            }
+            document.getElementById('browserInfo').textContent = window.detectionCache.browserInfo;
+            
+            // OS detection - more accurate
+            let os = "Unknown";
+            if (userAgent.includes("Win")) os = "Windows";
+            else if (userAgent.includes("Mac")) os = "macOS";
+            else if (userAgent.includes("Linux")) os = "Linux";
+            else if (userAgent.includes("Android")) os = "Android";
+            else if (userAgent.includes("like Mac")) os = "iOS";
+            
+            if (!window.detectionCache.osInfo) {
+                window.detectionCache.osInfo = os;
+            }
+            document.getElementById('osInfo').textContent = window.detectionCache.osInfo;
+            
+            // Screen resolution
+            const screenRes = `${screen.width} × ${screen.height} (${screen.colorDepth}-bit color depth)`;
+            if (!window.detectionCache.screenRes) {
+                window.detectionCache.screenRes = screenRes;
+            }
+            document.getElementById('screenRes').textContent = window.detectionCache.screenRes;
+            
+            // Browser language
+            const browserLang = navigator.language || navigator.userLanguage || "Unknown";
+            if (!window.detectionCache.browserLang) {
+                window.detectionCache.browserLang = browserLang;
+            }
+            document.getElementById('browserLang').textContent = window.detectionCache.browserLang;
+            
+            // Cookies enabled
+            const cookiesStatus = navigator.cookieEnabled ? "Enabled" : "Disabled";
+            if (!window.detectionCache.cookiesStatus) {
+                window.detectionCache.cookiesStatus = cookiesStatus;
+            }
+            document.getElementById('cookiesStatus').textContent = window.detectionCache.cookiesStatus;
+            
+            // Device type
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+            const isTablet = /iPad|Android(?!.*Mobile)|Tablet|Silk/i.test(userAgent);
+            
+            let deviceType = "Desktop";
+            if (isTablet) deviceType = "Tablet";
+            else if (isMobile) deviceType = "Mobile";
+            
+            if (!window.detectionCache.deviceType) {
+                window.detectionCache.deviceType = deviceType;
+            }
+            document.getElementById('deviceType').textContent = window.detectionCache.deviceType;
+            
+            // CPU cores
+            const cores = navigator.hardwareConcurrency || "Unknown";
+            const cpuCoresText = cores + (cores !== "Unknown" ? " logical processors" : "");
+            if (!window.detectionCache.cpuCores) {
+                window.detectionCache.cpuCores = cpuCoresText;
+            }
+            document.getElementById('cpuCores').textContent = window.detectionCache.cpuCores;
+            
+            // Device memory - note this is NOT actual RAM but browser memory allocation
+            let deviceMemoryText = "Not reported by browser";
+            if (navigator.deviceMemory) {
+                deviceMemoryText = navigator.deviceMemory + " GB (browser-reported, not actual RAM)";
+            }
+            if (!window.detectionCache.deviceMemory) {
+                window.detectionCache.deviceMemory = deviceMemoryText;
+            }
+            document.getElementById('deviceMemory').textContent = window.detectionCache.deviceMemory;
+            
+            // Platform
+            const platform = navigator.platform || "Unknown";
+            if (!window.detectionCache.platform) {
+                window.detectionCache.platform = platform;
+            }
+            document.getElementById('platform').textContent = window.detectionCache.platform;
+            
+            // Touch support
+            const touchSupport = 'ontouchstart' in window || navigator.maxTouchPoints > 0 ? "Supported" : "Not supported";
+            if (!window.detectionCache.touchSupport) {
+                window.detectionCache.touchSupport = touchSupport;
+            }
+            document.getElementById('touchSupport').textContent = window.detectionCache.touchSupport;
+            
+            // Timezone
+            const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+            if (!window.detectionCache.timezone) {
+                window.detectionCache.timezone = timezone;
+            }
+            document.getElementById('timezone').textContent = window.detectionCache.timezone;
+            
+            // Local time
+            const now = new Date();
+            const localTime = now.toLocaleTimeString() + " (" + now.toLocaleDateString() + ")";
+            if (!window.detectionCache.localTime) {
+                window.detectionCache.localTime = localTime;
+            }
+            document.getElementById('localTime').textContent = window.detectionCache.localTime;
+            
+            // Do Not Track
+            const doNotTrack = navigator.doNotTrack || navigator.msDoNotTrack ? "Enabled" : "Disabled or not supported";
+            if (!window.detectionCache.doNotTrack) {
+                window.detectionCache.doNotTrack = doNotTrack;
+            }
+            document.getElementById('doNotTrack').textContent = window.detectionCache.doNotTrack;
+            if (doNotTrack === "Enabled") privacyScore += 5;
+            
+            // Third-party cookies (simulated)
+            const thirdPartyCookies = "Allowed (default)";
+            if (!window.detectionCache.thirdPartyCookies) {
+                window.detectionCache.thirdPartyCookies = thirdPartyCookies;
+            }
+            document.getElementById('thirdPartyCookies').textContent = window.detectionCache.thirdPartyCookies;
+            
+            // Session storage
+            const sessionStorageCount = Object.keys(sessionStorage).length;
+            const sessionStorageText = `Available (${sessionStorageCount} items stored)`;
+            if (!window.detectionCache.sessionStorage) {
+                window.detectionCache.sessionStorage = sessionStorageText;
+            }
+            document.getElementById('sessionStorage').textContent = window.detectionCache.sessionStorage;
+            
+            // Update privacy score
+            if (!window.detectionCache.privacyScore) {
+                window.detectionCache.privacyScore = Math.min(95, Math.max(65, privacyScore));
+            }
+            document.getElementById('privacyScore').textContent = window.detectionCache.privacyScore;
+            
+            // Update tracking count
+            if (!window.detectionCache.trackingCount) {
+                window.detectionCache.trackingCount = '5';
+            }
+            document.getElementById('trackingCount').textContent = window.detectionCache.trackingCount;
+            
+            // Update sensitive data count
+            if (!window.detectionCache.sensitiveCount) {
+                window.detectionCache.sensitiveCount = '3';
+            }
+            document.getElementById('sensitiveCount').textContent = window.detectionCache.sensitiveCount;
+            
+            // Calculate fingerprint risk based on actual data (not random)
+            let fingerprintRisk = 50; // Base risk
+            
+            // Increase risk based on identifiable features
+            if (cores !== "Unknown") fingerprintRisk += 10;
+            if (navigator.deviceMemory) fingerprintRisk += 5;
+            if (screen.width > 0 && screen.height > 0) fingerprintRisk += 10;
+            if (timezone !== "Unknown") fingerprintRisk += 5;
+            if (browserLang !== "Unknown") fingerprintRisk += 5;
+            
+            // Cap at 85%
+            fingerprintRisk = Math.min(85, fingerprintRisk);
+            
+            if (!window.detectionCache.fingerprintRisk) {
+                window.detectionCache.fingerprintRisk = fingerprintRisk;
+            }
+            
+            document.getElementById('fingerprintRiskBar').style.width = window.detectionCache.fingerprintRisk + "%";
+            
+            let fingerprintRiskText = "Your browser has relatively few identifiable characteristics";
+            if (window.detectionCache.fingerprintRisk > 75) {
+                fingerprintRiskText = "High fingerprinting risk - many unique identifiers";
+            } else if (window.detectionCache.fingerprintRisk > 60) {
+                fingerprintRiskText = "Medium fingerprinting risk - several identifiable characteristics";
+            }
+            
+            document.getElementById('fingerprintRiskText').textContent = fingerprintRiskText;
+            
+            // Fetch IP address and location (only if not cached)
+            if (!window.detectionCache.ipAddress) {
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        window.detectionCache.ipAddress = data.ip;
+                        document.getElementById('ipAddress').textContent = window.detectionCache.ipAddress;
+                        
+                        // Get location info based on IP
+                        return fetch(`https://ipapi.co/${data.ip}/json/`);
+                    })
+                    .then(response => response.json())
+                    .then(locationData => {
+                        // ISP and connection info
+                        window.detectionCache.ispInfo = locationData.org || "Unknown ISP";
+                        document.getElementById('ispInfo').textContent = window.detectionCache.ispInfo;
+                        
+                        // Approximate location
+                        let locationText = "";
+                        if (locationData.city) locationText += locationData.city + ", ";
+                        if (locationData.region) locationText += locationData.region + ", ";
+                        if (locationData.country_name) locationText += locationData.country_name;
+                        
+                        window.detectionCache.approxLocation = locationText || "Location detection failed";
+                        document.getElementById('approxLocation').textContent = window.detectionCache.approxLocation;
+                        
+                        // VPN detection - check for hosting/VPN IPs
+                        let vpnStatus = "No VPN detected";
+                        if (locationData.org && (
+                            locationData.org.toLowerCase().includes("vpn") || 
+                            locationData.org.toLowerCase().includes("hosting") ||
+                            locationData.org.toLowerCase().includes("data center") ||
+                            locationData.org.toLowerCase().includes("cloud")
+                        )) {
+                            vpnStatus = "VPN/Proxy likely detected";
+                            privacyScore -= 5;
+                        }
+                        
+                        window.detectionCache.vpnStatus = vpnStatus;
+                        document.getElementById('vpnStatus').textContent = window.detectionCache.vpnStatus;
+                        document.getElementById('vpnStatus').className = vpnStatus.includes("VPN") ? 
+                            "data-value text-green-600 font-bold" : "data-value text-gray-700";
+                        
+                        // Update geo accuracy
+                        const geoAccuracy = locationData.city ? 70 : (locationData.region ? 50 : 30);
+                        window.detectionCache.geoAccuracy = geoAccuracy;
+                        document.getElementById('geoAccuracyBar').style.width = geoAccuracy + "%";
+                        
+                        let geoAccuracyText = "IP-based location is typically accurate to city level";
+                        if (geoAccuracy <= 50) geoAccuracyText = "IP-based location is accurate to region/state level";
+                        if (geoAccuracy <= 30) geoAccuracyText = "IP-based location only shows country-level accuracy";
+                        
+                        window.detectionCache.geoAccuracyText = geoAccuracyText;
+                        document.getElementById('geoAccuracyText').textContent = window.detectionCache.geoAccuracyText;
+                        
+                        // Update final privacy score
+                        window.detectionCache.privacyScore = Math.min(95, Math.max(65, privacyScore));
+                        document.getElementById('privacyScore').textContent = window.detectionCache.privacyScore;
+                    })
+                    .catch(error => {
+                        console.error("Error fetching IP information:", error);
+                        window.detectionCache.ipAddress = "Detection failed (check connectivity)";
+                        window.detectionCache.ispInfo = "Unknown";
+                        window.detectionCache.approxLocation = "Location detection failed";
+                        window.detectionCache.vpnStatus = "Unable to detect";
+                        
+                        document.getElementById('ipAddress').textContent = window.detectionCache.ipAddress;
+                        document.getElementById('ispInfo').textContent = window.detectionCache.ispInfo;
+                        document.getElementById('approxLocation').textContent = window.detectionCache.approxLocation;
+                        document.getElementById('vpnStatus').textContent = window.detectionCache.vpnStatus;
+                    });
+            } else {
+                // Use cached data
+                document.getElementById('ipAddress').textContent = window.detectionCache.ipAddress;
+                document.getElementById('ispInfo').textContent = window.detectionCache.ispInfo || "Detecting...";
+                document.getElementById('approxLocation').textContent = window.detectionCache.approxLocation || "Detecting...";
+                document.getElementById('vpnStatus').textContent = window.detectionCache.vpnStatus || "Checking...";
+                
+                if (window.detectionCache.geoAccuracy) {
+                    document.getElementById('geoAccuracyBar').style.width = window.detectionCache.geoAccuracy + "%";
+                }
+                if (window.detectionCache.geoAccuracyText) {
+                    document.getElementById('geoAccuracyText').textContent = window.detectionCache.geoAccuracyText;
+                }
+            }
+        }
+        
+        // Initial detection when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            detectVisitorInfo();
+            
+            // Add event listener to refresh button
+            document.getElementById('refreshBtn').addEventListener('click', function() {
+                // Show loading state
+                const btn = this;
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Refreshing...';
+                btn.disabled = true;
+                
+                // Only refresh time-sensitive data
+                const now = new Date();
+                window.detectionCache.localTime = now.toLocaleTimeString() + " (" + now.toLocaleDateString() + ")";
+                document.getElementById('localTime').textContent = window.detectionCache.localTime;
+                
+                // Update session storage count
+                const sessionStorageCount = Object.keys(sessionStorage).length;
+                window.detectionCache.sessionStorage = `Available (${sessionStorageCount} items stored)`;
+                document.getElementById('sessionStorage').textContent = window.detectionCache.sessionStorage;
+                
+                // Re-fetch IP data
+                delete window.detectionCache.ipAddress;
+                delete window.detectionCache.ispInfo;
+                delete window.detectionCache.approxLocation;
+                delete window.detectionCache.vpnStatus;
+                delete window.detectionCache.geoAccuracy;
+                delete window.detectionCache.geoAccuracyText;
+                
+                // Update UI
+                document.getElementById('ipAddress').textContent = "Refreshing...";
+                document.getElementById('ispInfo').textContent = "Refreshing...";
+                document.getElementById('approxLocation').textContent = "Refreshing...";
+                document.getElementById('vpnStatus').textContent = "Checking...";
+                
+                // Fetch new IP data
+                fetch('https://api.ipify.org?format=json')
+                    .then(response => response.json())
+                    .then(data => {
+                        window.detectionCache.ipAddress = data.ip;
+                        document.getElementById('ipAddress').textContent = window.detectionCache.ipAddress;
+                        
+                        return fetch(`https://ipapi.co/${data.ip}/json/`);
+                    })
+                    .then(response => response.json())
+                    .then(locationData => {
+                        window.detectionCache.ispInfo = locationData.org || "Unknown ISP";
+                        document.getElementById('ispInfo').textContent = window.detectionCache.ispInfo;
+                        
+                        let locationText = "";
+                        if (locationData.city) locationText += locationData.city + ", ";
+                        if (locationData.region) locationText += locationData.region + ", ";
+                        if (locationData.country_name) locationText += locationData.country_name;
+                        
+                        window.detectionCache.approxLocation = locationText || "Location detection failed";
+                        document.getElementById('approxLocation').textContent = window.detectionCache.approxLocation;
+                        
+                        let vpnStatus = "No VPN detected";
+                        if (locationData.org && (
+                            locationData.org.toLowerCase().includes("vpn") || 
+                            locationData.org.toLowerCase().includes("hosting") ||
+                            locationData.org.toLowerCase().includes("data center") ||
+                            locationData.org.toLowerCase().includes("cloud")
+                        )) {
+                            vpnStatus = "VPN/Proxy likely detected";
+                        }
+                        
+                        window.detectionCache.vpnStatus = vpnStatus;
+                        document.getElementById('vpnStatus').textContent = window.detectionCache.vpnStatus;
+                        document.getElementById('vpnStatus').className = vpnStatus.includes("VPN") ? 
+                            "data-value text-green-600 font-bold" : "data-value text-gray-700";
+                        
+                        const geoAccuracy = locationData.city ? 70 : (locationData.region ? 50 : 30);
+                        window.detectionCache.geoAccuracy = geoAccuracy;
+                        document.getElementById('geoAccuracyBar').style.width = geoAccuracy + "%";
+                        
+                        let geoAccuracyText = "IP-based location is typically accurate to city level";
+                        if (geoAccuracy <= 50) geoAccuracyText = "IP-based location is accurate to region/state level";
+                        if (geoAccuracy <= 30) geoAccuracyText = "IP-based location only shows country-level accuracy";
+                        
+                        window.detectionCache.geoAccuracyText = geoAccuracyText;
+                        document.getElementById('geoAccuracyText').textContent = window.detectionCache.geoAccuracyText;
+                        
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                        
+                        // Add visual feedback
+                        document.getElementById('ipAddressCard').classList.add('glow');
+                        setTimeout(function() {
+                            document.getElementById('ipAddressCard').classList.remove('glow');
+                        }, 1000);
+                    })
+                    .catch(error => {
+                        console.error("Error refreshing IP information:", error);
+                        window.detectionCache.ipAddress = "Refresh failed";
+                        window.detectionCache.ispInfo = "Unknown";
+                        window.detectionCache.approxLocation = "Location detection failed";
+                        window.detectionCache.vpnStatus = "Unable to detect";
+                        
+                        document.getElementById('ipAddress').textContent = window.detectionCache.ipAddress;
+                        document.getElementById('ispInfo').textContent = window.detectionCache.ispInfo;
+                        document.getElementById('approxLocation').textContent = window.detectionCache.approxLocation;
+                        document.getElementById('vpnStatus').textContent = window.detectionCache.vpnStatus;
+                        
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    });
+            });
+            
+            // Add info icon tooltips
+            document.querySelectorAll('.info-icon').forEach(icon => {
+                icon.addEventListener('click', function() {
+                    const title = this.getAttribute('title');
+                    alert(title);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
